@@ -6,6 +6,9 @@
     <title>Filing a Complaint</title>
     <link rel="stylesheet" href="styles/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+    /* Leaflet*/
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="scripts/script.js"></script>
 </head>
 <body>
@@ -25,30 +28,12 @@
                 <input type="text" placeholder="Central Oakland" class="search-input">
                 <button class="search-button">Search</button>
             </div>
-            <table class="info-table">
-                <tr>
-                    <th>Name</th>
-                    <td>Pittsburgh</td>
-                </tr>
-                <tr>
-                    <th>Type</th>
-                    <td>City</td>
-                </tr>
-                <tr>
-                    <th>Resource</th>
-                    <td>Call</td>
-                </tr>
-                <tr>
-                    <th>Contact</th>
-                    <td>412-255-2621</td>
-                </tr>
-                <tr>
-                    <th>Note</th>
-                    <td><a href="https://pittsburghpa.gov/omi/filing-complaint/" target="_blank">
-                        No complaint form, but very thorough information (on OMI) on it
-                    </a></td>
-                </tr>
-            </table>
+            <iframe
+              width="600"
+              height="300"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-79.960673%2C40.433825%2C-79.933823%2C40.443202&layer=mapnik"
+              style="border:1px solid #ccc;">
+            </iframe>
         </section>
         <section class="misconduct-section">
             <h2>Misconduct Complaint in Allegheny County</h2>

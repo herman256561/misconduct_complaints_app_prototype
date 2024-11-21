@@ -31,6 +31,14 @@ header {
     color: white;
 }
 
+/* 地圖容器的樣式 */
+#map {
+    width: 50%; /* 地圖寬度填滿父容器 */
+    height: 500px; /* 高度可根據需求調整 */
+    border: 1px solid #cccccc;
+    margin-top: 20px; /* 與其他內容保持間距 */
+}
+
 .logo {
     font-family: 'Rye';
     font-size: 26px;

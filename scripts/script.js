@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
   
     // 初始化 Here Maps 平台
       const platform = new H.service.Platform({
-          app_id: 'PZFNvWK2yeN0Rgd34HaW',
           apikey: 'bjVmBc2hpWGt1sn_mtnkvZCkuC0vqx_D3pp44ehO5AE' // 替換為您的 Here Maps API Key
       });
 

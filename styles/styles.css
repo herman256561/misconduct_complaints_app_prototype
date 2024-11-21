@@ -33,10 +33,11 @@ header {
 
 /* 地圖容器樣式 */
 #map {
-    width: 50%; /* 地圖寬度 */
-    height: 500px; /* 地圖高度 */
-    margin-top: 20px;
-    border: 1px solid #cccccc;
+    width: 50%; /* 設定地圖寬度為 50% */
+    height: 500px; /* 高度保持 500px */
+    margin: 20px auto; /* 上下間距 20px，水平置中 */
+    border: 1px solid #ccc; /* 可選：為地圖添加邊框 */
+    display: block;
 }
 
 .logo {

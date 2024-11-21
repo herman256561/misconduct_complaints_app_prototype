@@ -38,19 +38,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const marker = new H.map.Marker({ lat: 40.444611161087145, lng: -79.9521080838433 });
       map.addObject(marker);
   
-      // 點擊標記時顯示 InfoBubble
-            marker.addEventListener('tap', (evt) => {
-                // 獲取標記的位置
-                const position = evt.target.getGeometry();
-
-                // 創建或更新 InfoBubble
-                const bubble = new H.ui.InfoBubble(position, {
-                    content: generateInfoTable() // 調用生成表格的函數
-                });
-
-                // 將 InfoBubble 添加到 UI
-                ui.addBubble(bubble);
-            });
+      // Add click event to the marker
+      marker.addEventListener('tap', () => {
+          // Show a short message in an InfoBubble
+          const bubble = new H.ui.InfoBubble({ lat: 40.444611161087145, lng: -79.9521080838433 }, {
+              content: 'This is Pittsburgh!' // Simple short message
+          });
+          ui.addBubble(bubble);
+      });
   
       searchButton.addEventListener('click', () => {
         const lat = parseFloat(document.querySelector('.search-input').value.split(',')[0]);
@@ -58,37 +53,4 @@ document.addEventListener('DOMContentLoaded', () => {
         map.setCenter({ lat, lng });
         marker.setGeometry({ lat, lng });
       });
-  
-      /**
-             * 生成表格的函數
-             * @returns {string} 表格的 HTML 字符串
-             */
-            function generateInfoTable() {
-                return `
-                    <table class="info-table">
-                        <tr>
-                            <th>Name</th>
-                            <td>Pittsburgh</td>
-                        </tr>
-                        <tr>
-                            <th>Type</th>
-                            <td>City</td>
-                        </tr>
-                        <tr>
-                            <th>Resource</th>
-                            <td>Call</td>
-                        </tr>
-                        <tr>
-                            <th>Contact</th>
-                            <td>412-255-2621</td>
-                        </tr>
-                        <tr>
-                            <th>Note</th>
-                            <td><a href="https://pittsburghpa.gov/omi/filing-complaint/" target="_blank">
-                                No complaint form, but very thorough information (on OMI) on it
-                            </a></td>
-                        </tr>
-                    </table>
-                `;
-            }
 });

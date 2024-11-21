@@ -1,121 +1,121 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f8f8;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
 }
 
 header {
-    background: linear-gradient(90deg, #f6e27a, #000000);
-    padding: 10px 20px;
+  background: linear-gradient(90deg, #f6e27a, #000000);
+  padding: 10px 20px;
 }
 
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav-links {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
 }
 
 .nav-links a {
-    text-decoration: none;
-    font-weight: bold;
-    color: white;
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
 }
 
 /* 地圖容器樣式 */
 #map {
-    width: 50%; /* 設定地圖寬度為 50% */
-    height: 500px; /* 高度保持 500px */
-    margin: 20px auto; /* 上下間距 20px，水平置中 */
-    border: 1px solid #ccc; /* 可選：為地圖添加邊框 */
-    display: block;
+  width: 50%; /* Map container width */
+  height: 500px; /* Map container height */
+  margin: 20px auto; /* Center horizontally */
+  border: 1px solid #cccccc;
+  display: block;
 }
 
 .logo {
-    font-family: 'Rye';
-    font-size: 26px;
-    font-weight: bold;
+  font-family: "Rye";
+  font-size: 26px;
+  font-weight: bold;
 }
 
 .complaint-section {
-    padding: 20px;
-    text-align: center;
+  padding: 20px;
+  text-align: center;
 }
 
 .complaint-section h1 {
-    color: #a67f23;
+  color: #a67f23;
 }
 
 .search-container {
-    margin: 20px auto;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 .search-input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .search-button {
-    background-color: #a67f23;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  background-color: #a67f23;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .search-button:hover {
-    background-color: #815e17;
+  background-color: #815e17;
 }
 
 .info-table {
-    margin: 20px auto;
-    border-collapse: collapse;
-    width: 40%;
-    background-color: #ffffff;
-    border: 1px solid #cccccc;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  border-collapse: collapse;
+  width: 40%;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .info-table th,
 .info-table td {
-    padding: 10px;
-    text-align: left;
-    border: 1px solid #dddddd;
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #dddddd;
 }
 
 .info-table th {
-    background-color: #f6e27a;
+  background-color: #f6e27a;
 }
 
 .info-table td a {
-    color: #0056b3;
-    text-decoration: none;
+  color: #0056b3;
+  text-decoration: none;
 }
 
 .info-table td a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .misconduct-section {
-    padding: 20px;
-    background-color: #fff8e1;
-    text-align: center;
+  padding: 20px;
+  background-color: #fff8e1;
+  text-align: center;
 }
 
 .misconduct-section h2 {
-    color: #a67f23;
+  color: #a67f23;
 }

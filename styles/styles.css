@@ -31,12 +31,12 @@ header {
     color: white;
 }
 
-/* 地圖容器的樣式 */
+/* 地圖容器樣式 */
 #map {
-    width: 50%; /* 地圖寬度填滿父容器 */
-    height: 500px; /* 高度可根據需求調整 */
+    width: 50%; /* 地圖寬度 */
+    height: 500px; /* 地圖高度 */
+    margin-top: 20px;
     border: 1px solid #cccccc;
-    margin-top: 20px; /* 與其他內容保持間距 */
 }
 
 .logo {

@@ -1,19 +1,5 @@
 // page load
 document.addEventListener('DOMContentLoaded', () => {
-    // 初始化地圖
-    const map = L.map('map').setView([40.444611161087145, -79.9521080838433], 15);
-
-    // 加載 OpenStreetMap 圖層
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19, // 最大縮放等級
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    // 添加標記
-    L.marker([40.444611161087145, -79.9521080838433]).addTo(map)
-        .bindPopup('This is your selected location.') // 標記彈出視窗內容
-        .openPopup(); 
-  
     const searchButton = document.querySelector('.search-button');
     const tables = document.querySelectorAll('.info-table');
 
@@ -23,4 +9,39 @@ document.addEventListener('DOMContentLoaded', () => {
             table.style.display = 'table'; // 顯示所有表格
         });
     });
+  
+    // 初始化 Here Maps 平台
+      const platform = new H.service.Platform({
+          apikey: 'bjVmBc2hpWGt1sn_mtnkvZCkuC0vqx_D3pp44ehO5AE' // 替換為您的 Here Maps API Key
+      });
+
+      // 獲取默認圖層
+      const defaultLayers = platform.createDefaultLayers();
+
+      // 初始化地圖容器
+      const map = new H.Map(
+          document.getElementById('map'),
+          defaultLayers.vector.normal.map,
+          {
+              center: { lat: 40.444611161087145, lng: -79.9521080838433 }, // 初始經緯度
+              zoom: 15, // 初始縮放等級
+          }
+      );
+
+      // 添加互動功能（縮放、拖拽）
+      const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+      // 添加 UI 控件（縮放按鈕等）
+      const ui = H.ui.UI.createDefault(map, defaultLayers);
+
+      // 添加標記
+      const marker = new H.map.Marker({ lat: 40.444611161087145, lng: -79.9521080838433 });
+      map.addObject(marker);
+  
+      searchButton.addEventListener('click', () => {
+        const lat = parseFloat(document.querySelector('.search-input').value.split(',')[0]);
+        const lng = parseFloat(document.querySelector('.search-input').value.split(',')[1]);
+        map.setCenter({ lat, lng });
+        marker.setGeometry({ lat, lng });
+      });
 });

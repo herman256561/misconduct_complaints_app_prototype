@@ -6,9 +6,11 @@
     <title>Filing a Complaint</title>
     <link rel="stylesheet" href="styles/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
-    <!-- Leaflet.js 的 CSS 和 JS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- 引入 Here Maps 的 JavaScript 和 CSS -->
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <link rel="stylesheet" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
 </head>
 <body>
     <header>
@@ -37,7 +39,7 @@
             </p>
         </section>
     </main>
-    <!-- 外部 JS 文件 -->
+    <!-- 自定義腳本 -->
     <script src="scripts/script.js" defer></script>
 </body>
 </html>

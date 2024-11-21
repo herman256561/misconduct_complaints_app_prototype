@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });  
   
+    /*
     // Toggle map mode button
         const mapToggleButton = document.querySelector('.map-toggle-button');
         const mapContainer = document.getElementById('map');
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 mapToggleButton.textContent = 'Map Mode';
             }
         });
+    */
   
     // Update map center and marker location on search
     searchButton.addEventListener('click', () => {

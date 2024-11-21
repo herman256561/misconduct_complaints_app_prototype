@@ -10,7 +10,25 @@ document.addEventListener('DOMContentLoaded', () => {
             table.style.display = 'table';
         });
     });  
+  
+    // Toggle map mode button
+        const mapToggleButton = document.querySelector('.map-toggle-button');
+        const mapContainer = document.getElementById('map');
+        const textContainer = document.querySelector('.text-container');
 
+        mapToggleButton.addEventListener('click', () => {
+            // Toggle visibility between text and map mode
+            if (mapContainer.style.display === 'none' || mapContainer.style.display === '') {
+                mapContainer.style.display = 'block';
+                textContainer.style.display = 'none';
+                mapToggleButton.textContent = 'Text Mode';
+            } else {
+                mapContainer.style.display = 'none';
+                textContainer.style.display = 'block';
+                mapToggleButton.textContent = 'Map Mode';
+            }
+        });
+  
     // Update map center and marker location on search
     searchButton.addEventListener('click', () => {
       const lat = parseFloat(document.querySelector('.search-input').value.split(',')[0]);

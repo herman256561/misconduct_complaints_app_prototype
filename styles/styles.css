@@ -31,7 +31,7 @@ header {
   color: white;
 }
 
-/* 地圖容器樣式 */
+/* Map container styles */
 #map {
   width: 50%; /* Map container width */
   height: 500px; /* Map container height */
@@ -64,7 +64,7 @@ header {
 
 .search-input {
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   border-radius: 4px;
 }
 

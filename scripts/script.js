@@ -13,26 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /*
-    // Toggle map mode button
-        const mapToggleButton = document.querySelector('.map-toggle-button');
-        const mapContainer = document.getElementById('map');
-        const textContainer = document.querySelector('.text-container');
-
-        mapToggleButton.addEventListener('click', () => {
-            // Toggle visibility between text and map mode
-            if (mapContainer.style.display === 'none' || mapContainer.style.display === '') {
-                mapContainer.style.display = 'block';
-                textContainer.style.display = 'none';
-                mapToggleButton.textContent = 'Text Mode';
-            } else {
-                mapContainer.style.display = 'none';
-                textContainer.style.display = 'block';
-                mapToggleButton.textContent = 'Map Mode';
-            }
-        });
-    */
-
   // Update map center and marker location on search
   searchButton.addEventListener("click", () => {
     const lat = parseFloat(
@@ -45,48 +25,57 @@ document.addEventListener("DOMContentLoaded", () => {
     marker.setGeometry({ lat, lng });
   });
 
+  // Reverse geocoding to get location information
+  function reverseGeocode(platform, coord, callback) {
+    const geocoder = platform.getSearchService();
+    geocoder.reverseGeocode(
+      {
+        at: `${coord.lat},${coord.lng}`,
+      },
+      (result) => {
+        // Extract the first address from the response
+        const location =
+          result.items && result.items.length
+            ? result.items[0].address.label
+            : "Unknown location";
+        callback(location);
+      },
+      (error) => {
+        console.error("Reverse geocoding failed:", error);
+        callback("Error retrieving location");
+      }
+    );
+  }
+
   // set up click listener in the map
   function setUpClickListener(map) {
-    // Attach an event listener to map display
-    // obtain the coordinates and display in an alert box.
-    // the behaviors that will be executed after a click
     map.addEventListener("tap", function (evt) {
       var coord = map.screenToGeo(
         evt.currentPointer.viewportX,
         evt.currentPointer.viewportY
       );
-      // If bubble exist, remove the old one, create a new one
-      if (flag == false) {
-        bubble = new H.ui.InfoBubble({ lat: coord.lat, lng: coord.lng });
-        bubble.setContent(
-          "Here is: " +
-            Math.abs(coord.lat.toFixed(4)) +
-            (coord.lat > 0 ? "N" : "S") +
-            " " +
-            Math.abs(coord.lng.toFixed(4)) +
-            (coord.lng > 0 ? "E" : "W")
-        );
-        ui.addBubble(bubble);
-        flag = true;
-      } else {
-        ui.removeBubble(bubble);
-        bubble = new H.ui.InfoBubble({ lat: coord.lat, lng: coord.lng });
-        bubble.setContent(
-          "Here is: " +
-            Math.abs(coord.lat.toFixed(4)) +
-            (coord.lat > 0 ? "N" : "S") +
-            " " +
-            Math.abs(coord.lng.toFixed(4)) +
-            (coord.lng > 0 ? "E" : "W")
-        );
-        ui.addBubble(bubble);
-      }
+
+      // Perform reverse geocoding
+      reverseGeocode(platform, coord, (location) => {
+        // If bubble exists, remove the old one, create a new one
+        if (flag == false) {
+          bubble = new H.ui.InfoBubble({ lat: coord.lat, lng: coord.lng });
+          bubble.setContent(`Location: ${location}`);
+          ui.addBubble(bubble);
+          flag = true;
+        } else {
+          ui.removeBubble(bubble);
+          bubble = new H.ui.InfoBubble({ lat: coord.lat, lng: coord.lng });
+          bubble.setContent(`Location: ${location}`);
+          ui.addBubble(bubble);
+        }
+      });
     });
   }
 
   // Initialize Here Maps platform
   const platform = new H.service.Platform({
-    apikey: "bjVmBc2hpWGt1sn_mtnkvZCkuC0vqx_D3pp44ehO5AE", // 替換為您的 Here Maps API Key
+    apikey: "bjVmBc2hpWGt1sn_mtnkvZCkuC0vqx_D3pp44ehO5AE", // Replace with your Here Maps API Key
   });
 
   // Retrieve default map layers

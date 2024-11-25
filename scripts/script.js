@@ -38,6 +38,31 @@ document.addEventListener('DOMContentLoaded', () => {
       map.setCenter({ lat, lng });
       marker.setGeometry({ lat, lng });
     });
+    
+    // 
+    function setUpClickListener(map) {
+        // Attach an event listener to map display
+        // obtain the coordinates and display in an alert box.
+        map.addEventListener("tap", function (evt) {
+          var coord = map.screenToGeo(
+            evt.currentPointer.viewportX,
+            evt.currentPointer.viewportY
+          );
+          logEvent(
+            "Clicked at " +
+              Math.abs(coord.lat.toFixed(4)) +
+              (coord.lat > 0 ? "N" : "S") +
+              " " +
+              Math.abs(coord.lng.toFixed(4)) +
+              (coord.lng > 0 ? "E" : "W")
+          );
+        });
+      }
+  
+    
+  
+  
+  
   
     // Initialize Here Maps platform
       const platform = new H.service.Platform({
@@ -57,9 +82,27 @@ document.addEventListener('DOMContentLoaded', () => {
           }
       );
 
+      window.addEventListener("resize", () => map.getViewPort().resize());
+  
       // Enable map interaction (zoom, drag)
       const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 
+      var logContainer = document.createElement("ul");
+      logContainer.className = "log";
+      logContainer.innerHTML = '<li class="log-entry">Try clicking on the map</li>';
+      map.getElement().appendChild(logContainer);
+  
+      function logEvent(str) {
+        var entry = document.createElement("li");
+        entry.className = "log-entry";
+        entry.textContent = str;
+        logContainer.insertBefore(entry, logContainer.firstChild);
+      }
+  
+      setUpClickListener(map);
+  
+  
+  
       // Add UI controls (e.g., zoom buttons)
       const ui = H.ui.UI.createDefault(map, defaultLayers);
 

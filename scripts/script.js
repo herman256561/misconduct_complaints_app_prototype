@@ -49,24 +49,18 @@ document.addEventListener('DOMContentLoaded', () => {
             evt.currentPointer.viewportX,
             evt.currentPointer.viewportY
           );
-          
+          let flag = 0
+          if(flag)
           const marker = new H.map.Marker({ lat: coord.lat, lng: coord.lng });
           map.addObject(marker);
+          // Add click listener to the marker
           marker.addEventListener('tap', () => {
           // Show a short message in an InfoBubble
-          const bubble = new H.ui.InfoBubble({ lat: 40.444611161087145, lng: -79.9521080838433 }, {
+          const bubble = new H.ui.InfoBubble({ lat: coord.lat, lng: coord.lng }, {
                   content: 'This is Pittsburgh!' // Simple short message
               });
               ui.addBubble(bubble);
           });
-          logEvent(
-            "Clicked at " +
-              Math.abs(coord.lat.toFixed(4)) +
-              (coord.lat > 0 ? "N" : "S") +
-              " " +
-              Math.abs(coord.lng.toFixed(4)) +
-              (coord.lng > 0 ? "E" : "W")
-          );
         });
       }
   
@@ -93,17 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
       // Enable map interaction (zoom, drag)
       const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 
-      var logContainer = document.createElement("ul");
-      logContainer.className = "log";
-      logContainer.innerHTML = '<li class="log-entry">Try clicking on the map</li>';
-      map.getElement().appendChild(logContainer);
-  
-      function logEvent(str) {
-        var entry = document.createElement("li");
-        entry.className = "log-entry";
-        entry.textContent = str;
-        logContainer.insertBefore(entry, logContainer.firstChild);
-      }
   
       setUpClickListener(map);
   

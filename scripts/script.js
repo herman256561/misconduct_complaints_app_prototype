@@ -3,7 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     //search button actions
     const searchButton = document.querySelector('.search-button');
     const tables = document.querySelectorAll('.info-table');
-
+    let marker = null;
+    console.log(marker);
+    let flag = false;
+  
     // Click search button to display all tables
     searchButton.addEventListener('click', () => {
         tables.forEach(table => {
@@ -49,20 +52,29 @@ document.addEventListener('DOMContentLoaded', () => {
             evt.currentPointer.viewportX,
             evt.currentPointer.viewportY
           );
-          let flag = 0
-          if(flag)
-          const marker = new H.map.Marker({ lat: coord.lat, lng: coord.lng });
-          map.addObject(marker);
-          // Add click listener to the marker
-          marker.addEventListener('tap', () => {
+          if(flag == false){
+            marker = new H.map.Marker({ lat: coord.lat, lng: coord.lng });
+            map.addObject(marker);
+            console.log(marker);
+            flag = true
+          }else{
+            map.removeObject(marker);
+            marker = new H.map.Marker({ lat: coord.lat, lng: coord.lng });
+            map.addObject(marker);
+          }
+          
+        });
+      }
+    // If marker exist, add event listener to it
+    if(marker!=null){
+      marker.addEventListener('tap', () => {
           // Show a short message in an InfoBubble
           const bubble = new H.ui.InfoBubble({ lat: coord.lat, lng: coord.lng }, {
                   content: 'This is Pittsburgh!' // Simple short message
               });
               ui.addBubble(bubble);
           });
-        });
-      }
+    }
   
     // Initialize Here Maps platform
       const platform = new H.service.Platform({

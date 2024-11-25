@@ -3,8 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //search button actions
     const searchButton = document.querySelector('.search-button');
     const tables = document.querySelectorAll('.info-table');
-    let marker = null;
-    console.log(marker);
+    let bubble = null
     let flag = false;
   
     // Click search button to display all tables
@@ -52,29 +51,23 @@ document.addEventListener('DOMContentLoaded', () => {
             evt.currentPointer.viewportX,
             evt.currentPointer.viewportY
           );
+          // If bubble exist, remove the old one, create a new one
           if(flag == false){
-            marker = new H.map.Marker({ lat: coord.lat, lng: coord.lng });
-            map.addObject(marker);
-            console.log(marker);
+            bubble = new H.ui.InfoBubble({ lat: coord.lat, lng: coord.lng }, {
+                  content: 'This is Pittsburgh!' // Simple short message
+              });
+            ui.addBubble(bubble);
             flag = true
           }else{
-            map.removeObject(marker);
-            marker = new H.map.Marker({ lat: coord.lat, lng: coord.lng });
-            map.addObject(marker);
+            ui.removeBubble(bubble);
+            bubble = new H.ui.InfoBubble({ lat: coord.lat, lng: coord.lng }, {
+                  content: 'This is Pittsburgh!'+ coord.lat// Simple short message
+              });
+            ui.addBubble(bubble);
           }
           
         });
       }
-    // If marker exist, add event listener to it
-    if(marker!=null){
-      marker.addEventListener('tap', () => {
-          // Show a short message in an InfoBubble
-          const bubble = new H.ui.InfoBubble({ lat: coord.lat, lng: coord.lng }, {
-                  content: 'This is Pittsburgh!' // Simple short message
-              });
-              ui.addBubble(bubble);
-          });
-    }
   
     // Initialize Here Maps platform
       const platform = new H.service.Platform({
@@ -99,10 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Enable map interaction (zoom, drag)
       const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 
-  
       setUpClickListener(map);
-  
-  
   
       // Add UI controls (e.g., zoom buttons)
       const ui = H.ui.UI.createDefault(map, defaultLayers);

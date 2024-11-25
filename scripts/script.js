@@ -39,15 +39,26 @@ document.addEventListener('DOMContentLoaded', () => {
       marker.setGeometry({ lat, lng });
     });
     
-    // 
+    // set up click listener in the map
     function setUpClickListener(map) {
         // Attach an event listener to map display
         // obtain the coordinates and display in an alert box.
+        // the behaviors that will be executed after a click
         map.addEventListener("tap", function (evt) {
           var coord = map.screenToGeo(
             evt.currentPointer.viewportX,
             evt.currentPointer.viewportY
           );
+          
+          const marker = new H.map.Marker({ lat: coord.lat, lng: coord.lng });
+          map.addObject(marker);
+          marker.addEventListener('tap', () => {
+          // Show a short message in an InfoBubble
+          const bubble = new H.ui.InfoBubble({ lat: 40.444611161087145, lng: -79.9521080838433 }, {
+                  content: 'This is Pittsburgh!' // Simple short message
+              });
+              ui.addBubble(bubble);
+          });
           logEvent(
             "Clicked at " +
               Math.abs(coord.lat.toFixed(4)) +
@@ -58,11 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
           );
         });
       }
-  
-    
-  
-  
-  
   
     // Initialize Here Maps platform
       const platform = new H.service.Platform({
@@ -105,18 +111,4 @@ document.addEventListener('DOMContentLoaded', () => {
   
       // Add UI controls (e.g., zoom buttons)
       const ui = H.ui.UI.createDefault(map, defaultLayers);
-
-      // Add a marker to the map
-      const marker = new H.map.Marker({ lat: 40.444611161087145, lng: -79.9521080838433 });
-      map.addObject(marker);
-  
-      // Add a click event to the marker
-      marker.addEventListener('tap', () => {
-          // Show a short message in an InfoBubble
-          const bubble = new H.ui.InfoBubble({ lat: 40.444611161087145, lng: -79.9521080838433 }, {
-              content: 'This is Pittsburgh!' // Simple short message
-          });
-          ui.addBubble(bubble);
-      });
-  
 });

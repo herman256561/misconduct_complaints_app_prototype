@@ -33,10 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
         at: `${coord.lat},${coord.lng}`,
       },
       (result) => {
+        console.log(result);
         // Extract the first address from the response
         const location =
           result.items && result.items.length
-            ? result.items[0].address.label
+            ? "ZIP Code: "+result.items[0].address.postalCode+" Please contact: 0000-0000"
             : "Unknown location";
         callback(location);
       },
@@ -66,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           ui.removeBubble(bubble);
           bubble = new H.ui.InfoBubble({ lat: coord.lat, lng: coord.lng });
-          bubble.setContent(`Location: ${location}`);
+          bubble.setContent(`${location}`);
           ui.addBubble(bubble);
         }
       });

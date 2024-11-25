@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }else{
             ui.removeBubble(bubble);
             bubble = new H.ui.InfoBubble({ lat: coord.lat, lng: coord.lng }, {
-                  content: 'This is Pittsburgh!'+ coord.lat// Simple short message
+                  content: 'This is Pittsburgh!'// Simple short message
               });
             ui.addBubble(bubble);
           }
@@ -91,7 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
       // Enable map interaction (zoom, drag)
       const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
-
+      
+      // call the map click listener function
       setUpClickListener(map);
   
       // Add UI controls (e.g., zoom buttons)

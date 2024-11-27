@@ -1,3 +1,4 @@
+
 // page load
 document.addEventListener("DOMContentLoaded", () => {
   //search button actions
@@ -37,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Extract the first address from the response
         const location =
           result.items && result.items.length
-            ? "ZIP Code: "+result.items[0].address.postalCode+" Please contact: 0000-0000"
+            ? "ZIP Code: "+result.items[0].address.postalCode+" Please contact: 412-255-2621"
             : "Unknown location";
         callback(location);
       },

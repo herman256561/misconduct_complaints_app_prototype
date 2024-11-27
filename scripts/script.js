@@ -15,16 +15,16 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Update map center and marker location on search
-  searchButton.addEventListener("click", () => {
-    const lat = parseFloat(
-      document.querySelector(".search-input").value.split(",")[0]
-    );
-    const lng = parseFloat(
-      document.querySelector(".search-input").value.split(",")[1]
-    );
-    map.setCenter({ lat, lng });
-    marker.setGeometry({ lat, lng });
-  });
+  // searchButton.addEventListener("click", () => {
+  //   const lat = parseFloat(
+  //     document.querySelector(".search-input").value.split(",")[0]
+  //   );
+  //   const lng = parseFloat(
+  //     document.querySelector(".search-input").value.split(",")[1]
+  //   );
+  //   map.setCenter({ lat, lng });
+  //   marker.setGeometry({ lat, lng });
+  // });
 
   // Reverse geocoding to get location information
   function reverseGeocode(platform, coord, callback) {

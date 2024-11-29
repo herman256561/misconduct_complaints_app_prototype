@@ -74,7 +74,8 @@ h1{
 }
 
 .search-button,
-.map-toggle-button {
+.map-toggle-button.
+.post-button {
   background-color: #a67f23;
   color: white;
   padding: 10px 15px;
@@ -86,6 +87,15 @@ h1{
 .search-button:hover,
 .map-toggle-button:hover {
   background-color: #815e17;
+}
+
+.form-buttons .post0button{
+  background-color: #a67f23;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 /* Map Container Styles */

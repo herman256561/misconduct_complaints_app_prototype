@@ -47,8 +47,13 @@ header {
   padding: 20px;
   text-align: center;
 }
-
+/*
 .complaint-section h1 {
+  color: #a67f23;
+}
+*/
+
+h1{
   color: #a67f23;
 }
 

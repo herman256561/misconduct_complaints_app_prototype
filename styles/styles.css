@@ -119,6 +119,45 @@ h1{
   display: block;
 }
 
+/* InfoBubble Styling */
+.here-map-info-bubble {
+    background-color: #ffffff; /* 白色背景 */
+    border: 1px solid #cccccc; /* 邊框顏色 */
+    border-radius: 10px; /* 柔和的圓角 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 輕微陰影 */
+    padding: 15px; /* 內邊距 */
+    font-family: "Arial", sans-serif; /* 字體樣式 */
+    font-size: 14px; /* 字體大小 */
+    color: #4a4a4a; /* 文字顏色 */
+    line-height: 1.6; /* 行距 */
+    width: 280px; /* 固定寬度 */
+}
+
+/* Paragraph styling */
+.here-map-info-bubble p {
+    margin: 10px 0; /* 段落間距 */
+    padding: 0; /* 無額外內邊距 */
+}
+
+/* Bold text for emphasis */
+.here-map-info-bubble strong {
+    font-weight: bold; /* 加粗文字 */
+    color: #a67f23; /* 與主題一致的顏色 */
+    font-size: 15px; /* 稍微增大字體 */
+}
+
+/* Link styling inside the bubble */
+.here-map-info-bubble a {
+    color: #0056b3; /* 超連結顏色 */
+    text-decoration: none; /* 移除底線 */
+}
+
+.here-map-info-bubble a:hover {
+    text-decoration: underline; /* 滑鼠懸停時顯示底線 */
+    color: #003e80; /* 懸停時更深的顏色 */
+}
+
+
 /* Table Styles */
 .info-table {
   margin: 20px auto;

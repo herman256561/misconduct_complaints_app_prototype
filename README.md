@@ -1,5 +1,13 @@
+### 文字框太小
+### 兩個頁面要互連
+### 下方說明文字補滿
+### Create Forum Page
+### 地圖那邊點選後要顯示清楚一點的資訊
+---
+
+
 Question:<br>
-Should we create the forum page after having the prototype?
+Should we create the forum page after having the prototype? YY
 <br>
 <br>
 Updates:

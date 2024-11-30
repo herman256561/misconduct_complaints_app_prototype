@@ -160,29 +160,89 @@ h1{
   color: #a67f23;
 }
 
-/* Discussion Page Styles */
-.discussions {
-  margin: 20px auto;
-  border-collapse: collapse;
-  width: 80%;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
+/* General Styling for the Discussion */
 .discussion {
-  border: 1px solid #cccccc;
-  padding: 15px;
-  border-radius: 5px;
+    border: 1px solid #dddddd; /* Light border around the card */
+    padding: 20px; /* Padding inside the card */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background-color: #ffffff; /* White background for the card */
+    margin-bottom: 20px; /* Spacing between discussions */
 }
 
-.discussion h2 {
-  margin: 0 0 10px;
+/* Discussion Header Section */
+.discussion-header {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between avatar and content */
+    margin-bottom: 10px; /* Space between header and body */
+}
+
+/* Avatar Styling */
+.avatar {
+    width: 50px;
+    height: 50px;
+    background-color: #d3d3d3; /* Light gray avatar placeholder */
+    border-radius: 50%; /* Circular avatar */
+}
+
+/* Header Content */
+.header-content h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.header-content p {
+    margin: 5px 0 0; /* Small spacing between title and meta information */
+    font-size: 14px;
+    color: #555; /* Slightly gray text for meta information */
+    line-height: 1.4;
+}
+
+/* Author and Date Styling */
+.author {
+    font-weight: bold;
+    color: #000; /* Black for emphasis */
+}
+
+.date {
+    color: #666; /* Dimmed text color */
+}
+
+/* Location Styling */
+.location {
+    margin-left: 15px; /* Space between date and location */
+    display: inline-flex;
+    align-items: center;
+    color: #555; /* Dimmed text color */
+}
+
+.location-icon {
+    width: 12px; /* Icon size */
+    height: 12px;
+    background-color: #666; /* Gray color for the placeholder */
+    mask: url('location-icon.svg') no-repeat center; /* Replace with your location SVG */
+    -webkit-mask: url('location-icon.svg') no-repeat center;
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    margin-right: 5px; /* Space between icon and text */
+}
+
+/* Discussion Body */
+.discussion p {
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 1.5; /* Better readability */
 }
 
 .meta {
-  color: gray;
+    margin-top: 10px;
+    font-size: 12px;
+    color: gray; /* Subtle color for meta information */
 }
+
 
 /* Trending Section Styles */
 .trending {

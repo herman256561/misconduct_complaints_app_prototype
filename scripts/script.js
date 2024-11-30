@@ -26,7 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const locationContent = `
               <div class="here-map-info-bubble">
                   <p><strong>ZIP Code:</strong> ${postalCode}</p>
+                  <p><strong>Available Time: </strong>10am - 17pm</p>
                   <p><strong>Contact:</strong> 412-255-2621</p>
+                  <p><strong>Notes:</strong> No complaint form, but very thorough information (on OMI) on it <a href="#">https://pittsburghpa.gov/omi/filing-complaint/</a></p>
               </div>`;
             callback(locationContent);
           } else {

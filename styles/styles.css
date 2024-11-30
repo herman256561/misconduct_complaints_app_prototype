@@ -74,7 +74,8 @@ h1{
   color: #a67f23;
 }
 
-.search-container {
+.search-container,
+.search-bar {
   margin: 20px auto;
   max-width: 880px;
   display: flex;
@@ -92,7 +93,8 @@ h1{
 
 .search-button,
 .map-toggle-button,
-.post-button {
+.post-button,
+.new-discussion-button {
   background-color: #a67f23;
   color: white;
   padding: 10px 15px;
@@ -160,9 +162,12 @@ h1{
 
 /* Discussion Page Styles */
 .discussions {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  margin: 20px auto;
+  border-collapse: collapse;
+  width: 80%;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .discussion {

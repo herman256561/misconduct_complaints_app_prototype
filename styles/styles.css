@@ -42,6 +42,21 @@ header {
   font-weight: bold;
 }
 
+.logo a {
+    text-decoration: none; /* 移除底線 */
+    color: black; /* 設置初始字體顏色 */
+    font-family: "Rye";
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.logo a:hover,
+.logo a:visited,
+.logo a:active {
+    text-decoration: none; /* 點擊後依然無底線 */
+    color: black; /* 點擊或訪問後顏色不變 */
+}
+
 /* Search and Map Section Styles */
 .complaint-section {
   padding: 20px;

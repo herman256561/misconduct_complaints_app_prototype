@@ -150,60 +150,58 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize map click listener
   setUpClickListener(map);
   
-  // 檢查是否在 forum.html 頁面
-  const discussionsContainer = document.getElementById("discussionsContainer");
-  if (discussionsContainer) {
-    const newDiscussion = localStorage.getItem("newDiscussion");
+      // Handle new discussion form submission
+    const form = document.getElementById("discussionForm");
+    if (form) {
+        form.addEventListener("submit", (event) => {
+            event.preventDefault(); // Prevent default form submission behavior
 
-    // 如果有新討論，創建新的框框並添加到論壇
-    if (newDiscussion) {
-      const discussion = JSON.parse(newDiscussion);
+            const title = document.getElementById("title").value.trim();
+            const author = document.getElementById("name").value.trim();
+            const content = document.getElementById("content").value.trim();
 
-      // 建立新的文章元素
-      const article = document.createElement("article");
-      article.classList.add("discussion");
-      article.innerHTML = `
-        <h2>${discussion.title}</h2>
-        <p><strong>${discussion.author}</strong> on ${discussion.date}</p>
-        <p>${discussion.content}</p>
-      `;
+            // Check if all fields are filled
+            if (!title || !author || !content) {
+                alert("Please fill out all fields!");
+                return;
+            }
 
-      // 新的框框添加到討論區頂部
-      discussionsContainer.prepend(article);
+            const discussion = {
+                title,
+                author,
+                content,
+                date: new Date().toLocaleDateString(),
+            };
 
-      // 清除 localStorage 中的記錄，避免重複添加
-      localStorage.removeItem("newDiscussion");
+            // Save discussion data to localStorage
+            localStorage.setItem("newDiscussion", JSON.stringify(discussion));
+
+            // Redirect to forum.html
+            window.location.href = "forum.html"; // Ensure this line executes
+        });
     }
-  }
 
-  // 檢查是否在 new-discussion.html 頁面
-  const form = document.getElementById("discussionForm");
-  if (form) {
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
+    // Handle forum page discussions
+    const discussionsContainer = document.getElementById("discussionsContainer");
+    if (discussionsContainer) {
+        const newDiscussion = localStorage.getItem("newDiscussion");
+        if (newDiscussion) {
+            const discussion = JSON.parse(newDiscussion);
 
-      const title = document.getElementById("title").value.trim();
-      const author = document.getElementById("author").value.trim();
-      const content = document.getElementById("content").value.trim();
+            // Create new article element
+            const article = document.createElement("article");
+            article.classList.add("discussion");
+            article.innerHTML = `
+                <h2>${discussion.title}</h2>
+                <p><strong>${discussion.author}</strong> on ${discussion.date}</p>
+                <p>${discussion.content}</p>
+            `;
 
-      // 檢查所有欄位是否有填寫
-      if (!title || !author || !content) {
-        alert("Please fill out all fields!");
-        return;
-      }
+            // Add new discussion to the container
+            discussionsContainer.prepend(article);
 
-      const discussion = {
-        title,
-        author,
-        content,
-        date: new Date().toLocaleDateString(),
-      };
-
-      // 將新的討論資訊存到 localStorage
-      localStorage.setItem("newDiscussion", JSON.stringify(discussion));
-
-      // 跳轉到 forum.html 頁面
-      window.location.href = "forum.html";
-    });
-  }
+            // Clear the new discussion data from localStorage
+            localStorage.removeItem("newDiscussion");
+        }
+    }
 });

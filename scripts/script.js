@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-
   /*
   // Reverse geocoding to get location information
   function reverseGeocode(platform, coord, callback) {
@@ -98,17 +97,16 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
       reverseGeocode(platform, coord, (location) => {
-        if (flag === false) {
-          bubble = new H.ui.InfoBubble({ lat: coord.lat, lng: coord.lng });
-          bubble.setContent(`Location: ${location}`);
-          ui.addBubble(bubble);
-          flag = true;
-        } else {
+        // Remove the existing bubble if it exists
+        if (bubble) {
           ui.removeBubble(bubble);
-          bubble = new H.ui.InfoBubble({ lat: coord.lat, lng: coord.lng });
-          bubble.setContent(`${location}`);
-          ui.addBubble(bubble);
         }
+
+        // Create a new bubble with location info
+        bubble = new H.ui.InfoBubble({ lat: coord.lat, lng: coord.lng }, {
+          content: location, // Content is directly passed from reverseGeocode
+        });
+        ui.addBubble(bubble);
       });
     });
   }

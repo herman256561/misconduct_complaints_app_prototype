@@ -161,6 +161,14 @@ h1{
 }
 
 /* General Styling for the Discussion */
+.discussions {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* 增加每個 discussion 卡片之間的間距 */
+    padding: 20px;
+    background-color: #f8f8f8; /* 背景顏色，讓卡片與背景有區分 */
+}
+
 .discussion {
     border: 1px solid #dddddd; /* Light border around the card */
     padding: 20px; /* Padding inside the card */
@@ -168,6 +176,8 @@ h1{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     background-color: #ffffff; /* White background for the card */
     margin-bottom: 20px; /* Spacing between discussions */
+    margin: auto;
+    width: 80%;
 }
 
 /* Discussion Header Section */
@@ -197,18 +207,18 @@ h1{
 .header-content p {
     margin: 5px 0 0; /* Small spacing between title and meta information */
     font-size: 14px;
-    color: #555; /* Slightly gray text for meta information */
+    color: #555555; /* Slightly gray text for meta information */
     line-height: 1.4;
 }
 
 /* Author and Date Styling */
 .author {
     font-weight: bold;
-    color: #000; /* Black for emphasis */
+    color: #000000; /* Black for emphasis */
 }
 
 .date {
-    color: #666; /* Dimmed text color */
+    color: #666666; /* Dimmed text color */
 }
 
 /* Location Styling */
@@ -216,15 +226,15 @@ h1{
     margin-left: 15px; /* Space between date and location */
     display: inline-flex;
     align-items: center;
-    color: #555; /* Dimmed text color */
+    color: #555555; /* Dimmed text color */
 }
 
 .location-icon {
     width: 12px; /* Icon size */
     height: 12px;
-    background-color: #666; /* Gray color for the placeholder */
-    mask: url('location-icon.svg') no-repeat center; /* Replace with your location SVG */
-    -webkit-mask: url('location-icon.svg') no-repeat center;
+    background-color: #666666; /* Gray color for the placeholder */
+    mask: url('./location-icon.svg') no-repeat center; /* Replace with your location SVG */
+    -webkit-mask: url('./location-icon.svg') no-repeat center;
     mask-size: contain;
     -webkit-mask-size: contain;
     margin-right: 5px; /* Space between icon and text */

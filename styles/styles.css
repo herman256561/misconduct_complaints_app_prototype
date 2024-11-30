@@ -122,15 +122,16 @@ h1{
 /* InfoBubble Styling */
 .here-map-info-bubble {
     background-color: #ffffff; /* 白色背景 */
-    border: 1px solid #cccccc; /* 邊框顏色 */
+    border: 10px solid rgba(255,255,255,.5);
     border-radius: 10px; /* 柔和的圓角 */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 輕微陰影 */
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 輕微陰影 */
     padding: 15px; /* 內邊距 */
     font-family: "Arial", sans-serif; /* 字體樣式 */
     font-size: 14px; /* 字體大小 */
     color: #4a4a4a; /* 文字顏色 */
     line-height: 1.6; /* 行距 */
     width: 280px; /* 固定寬度 */
+    opacity: 1;
 }
 
 /* Paragraph styling */

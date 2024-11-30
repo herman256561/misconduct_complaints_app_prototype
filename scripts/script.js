@@ -15,32 +15,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function reverseGeocode(platform, coord, callback) {
     const geocoder = platform.getSearchService();
+
     geocoder.reverseGeocode(
       {
         at: `${coord.lat},${coord.lng}`,
       },
       (result) => {
-        const location =
-          result.items && result.items.length
-            ? `<div class="here-map-info-bubble">
-                  <p><strong>ZIP Code:</strong> ${result.items[0].address.postalCode}</p>
-                  <p><strong>Contact:</strong> 412-255-2621</p>
-              </div>`
-            : `<div class="here-map-info-bubble">
-                  <p><strong>Location not found</strong></p>
-              </div>`;
-        callback(location);
+        if (result.items && result.items.length) {
+          const postalCode = result.items[0].address.postalCode || "N/A";
+          const locationContent = `
+            <div class="here-map-info-bubble">
+                <p><strong>ZIP Code:</strong> ${postalCode}</p>
+                <p><strong>Contact:</strong> 412-255-2621</p>
+            </div>`;
+          callback(locationContent);
+        } else {
+          callback(`
+            <div class="here-map-info-bubble">
+                <p><strong>Location not found</strong></p>
+            </div>
+          `);
+        }
       },
       (error) => {
         console.error("Reverse geocoding failed:", error);
-        callback(
-          `<div class="here-map-info-bubble">
+        callback(`
+          <div class="here-map-info-bubble">
               <p><strong>Error retrieving location</strong></p>
-          </div>`
-        );
+          </div>
+        `);
       }
     );
   }
+
 
   /*
   // Reverse geocoding to get location information

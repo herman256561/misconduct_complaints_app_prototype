@@ -43,18 +43,18 @@ header {
 }
 
 .logo a {
-    text-decoration: none; /* 移除底線 */
-    color: black; /* 設置初始字體顏色 */
-    font-family: "Rye";
-    font-size: 26px;
-    font-weight: bold;
+  text-decoration: none; /* 移除底線 */
+  color: black; /* 設置初始字體顏色 */
+  font-family: "Rye";
+  font-size: 26px;
+  font-weight: bold;
 }
 
 .logo a:hover,
 .logo a:visited,
 .logo a:active {
-    text-decoration: none; /* 點擊後依然無底線 */
-    color: black; /* 點擊或訪問後顏色不變 */
+  text-decoration: none; /* 點擊後依然無底線 */
+  color: black; /* 點擊或訪問後顏色不變 */
 }
 
 /* Search and Map Section Styles */
@@ -69,7 +69,7 @@ header {
 }
 */
 
-h1{
+h1 {
   margin: auto;
   color: #a67f23;
 }
@@ -109,7 +109,6 @@ h1{
   background-color: #815e17;
 }
 
-
 /* Map Container Styles */
 #map {
   width: 50%; /* Map container width */
@@ -121,43 +120,42 @@ h1{
 
 /* InfoBubble Styling */
 .here-map-info-bubble {
-    background-color: #ffffff; /* 白色背景 */
-    border: 10px solid rgba(255,255,255,.5);
-    border-radius: 10px; /* 柔和的圓角 */
-    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 輕微陰影 */
-    padding: 15px; /* 內邊距 */
-    font-family: "Arial", sans-serif; /* 字體樣式 */
-    font-size: 14px; /* 字體大小 */
-    color: #4a4a4a; /* 文字顏色 */
-    line-height: 1.6; /* 行距 */
-    width: 280px; /* 固定寬度 */
-    opacity: 1;
+  background-color: #ffffff; /* 白色背景 */
+  border: 10px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px; /* 柔和的圓角 */
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 輕微陰影 */
+  padding: 15px; /* 內邊距 */
+  font-family: "Arial", sans-serif; /* 字體樣式 */
+  font-size: 14px; /* 字體大小 */
+  color: #4a4a4a; /* 文字顏色 */
+  line-height: 1.6; /* 行距 */
+  width: 280px; /* 固定寬度 */
+  opacity: 1;
 }
 
 /* Paragraph styling */
 .here-map-info-bubble p {
-    margin: 10px 0; /* 段落間距 */
-    padding: 0; /* 無額外內邊距 */
+  margin: 10px 0; /* 段落間距 */
+  padding: 0; /* 無額外內邊距 */
 }
 
 /* Bold text for emphasis */
 .here-map-info-bubble strong {
-    font-weight: bold; /* 加粗文字 */
-    color: #a67f23; /* 與主題一致的顏色 */
-    font-size: 15px; /* 稍微增大字體 */
+  font-weight: bold; /* 加粗文字 */
+  color: #a67f23; /* 與主題一致的顏色 */
+  font-size: 15px; /* 稍微增大字體 */
 }
 
 /* Link styling inside the bubble */
 .here-map-info-bubble a {
-    color: #0056b3; /* 超連結顏色 */
-    text-decoration: none; /* 移除底線 */
+  color: #0056b3; /* 超連結顏色 */
+  text-decoration: none; /* 移除底線 */
 }
 
 .here-map-info-bubble a:hover {
-    text-decoration: underline; /* 滑鼠懸停時顯示底線 */
-    color: #003e80; /* 懸停時更深的顏色 */
+  text-decoration: underline; /* 滑鼠懸停時顯示底線 */
+  color: #003e80; /* 懸停時更深的顏色 */
 }
-
 
 /* Table Styles */
 .info-table {
@@ -202,97 +200,98 @@ h1{
 
 /* General Styling for the Discussion */
 .discussions {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* 增加每個 discussion 卡片之間的間距 */
-    padding: 20px;
-    background-color: #f8f8f8; /* 背景顏色，讓卡片與背景有區分 */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* 增加每個 discussion 卡片之間的間距 */
+  padding: 20px;
+  background-color: #f8f8f8; /* 背景顏色，讓卡片與背景有區分 */
 }
 
 .discussion {
-    border: 1px solid #dddddd; /* Light border around the card */
-    padding: 20px; /* Padding inside the card */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    background-color: #ffffff; /* White background for the card */
-    margin-bottom: 20px; /* Spacing between discussions */
-    margin: auto;
-    width: 80%;
+  border: 1px solid #dddddd; /* Light border around the card */
+  padding: 20px; /* Padding inside the card */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background-color: #ffffff; /* White background for the card */
+  margin-bottom: 20px; /* Spacing between discussions */
+  margin: auto;
+  width: 80%;
 }
 
 /* Discussion Header Section */
 .discussion-header {
-    display: flex;
-    align-items: center;
-    gap: 15px; /* Space between avatar and content */
-    margin-bottom: 10px; /* Space between header and body */
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between avatar and content */
+  margin-bottom: 10px; /* Space between header and body */
 }
 
 /* Avatar Styling */
 .avatar {
-    width: 50px;
-    height: 50px;
-    background-color: #d3d3d3; /* Light gray avatar placeholder */
-    border-radius: 50%; /* Circular avatar */
+  width: 50px;
+  height: 50px;
+  background-color: #d3d3d3; /* Light gray avatar placeholder */
+  border-radius: 50%; /* Circular avatar */
 }
 
 /* Header Content */
 .header-content h2 {
-    margin: 0;
-    font-size: 20px;
-    font-weight: bold;
-    line-height: 1.2;
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.2;
 }
 
 .header-content p {
-    margin: 5px 0 0; /* Small spacing between title and meta information */
-    font-size: 14px;
-    color: #555555; /* Slightly gray text for meta information */
-    line-height: 1.4;
+  margin: 5px 0 0; /* Small spacing between title and meta information */
+  font-size: 14px;
+  color: #555555; /* Slightly gray text for meta information */
+  line-height: 1.4;
 }
 
 /* Author and Date Styling */
 .author {
-    font-weight: bold;
-    color: #000000; /* Black for emphasis */
+  font-weight: bold;
+  color: #000000; /* Black for emphasis */
 }
 
 .date {
-    color: #666666; /* Dimmed text color */
+  color: #666666; /* Dimmed text color */
 }
 
 /* Location Styling */
 .location {
-    display: inline-flex;
-    align-items: center;
-    color: #555555;
-    font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  color: #555555;
+  font-size: 14px;
 }
 
 .location-icon {
-    width: 12px; /* Icon size */
-    height: 12px;
-    background-color: #666666; /* Gray color for the placeholder */
-    mask: url('https://cdn.glitch.global/34de1ca7-f984-4079-8c74-669066e13693/location-icon.svg?v=1732946066987') no-repeat center; /* Replace with your location SVG */
-    -webkit-mask: url('https://cdn.glitch.global/34de1ca7-f984-4079-8c74-669066e13693/location-icon.svg?v=1732946066987') no-repeat center;
-    mask-size: contain;
-    -webkit-mask-size: contain;
-    margin-right: 5px; /* Space between icon and text */
+  width: 12px; /* Icon size */
+  height: 12px;
+  background-color: #666666; /* Gray color for the placeholder */
+  mask: url("https://cdn.glitch.global/34de1ca7-f984-4079-8c74-669066e13693/location-icon.svg?v=1732946066987")
+    no-repeat center; /* Replace with your location SVG */
+  -webkit-mask: url("https://cdn.glitch.global/34de1ca7-f984-4079-8c74-669066e13693/location-icon.svg?v=1732946066987")
+    no-repeat center;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  margin-right: 5px; /* Space between icon and text */
 }
 
 /* Discussion Body */
 .discussion p {
-    margin: 10px 0;
-    font-size: 14px;
-    line-height: 1.5; /* Better readability */
+  margin: 10px 0;
+  font-size: 14px;
+  line-height: 1.5; /* Better readability */
 }
 
 .meta {
-    margin-top: 10px;
-    font-size: 12px;
-    color: gray; /* Subtle color for meta information */
+  margin-top: 10px;
+  font-size: 12px;
+  color: gray; /* Subtle color for meta information */
 }
-
 
 /* Trending Section Styles */
 .trending {
@@ -363,7 +362,7 @@ form .cancel {
 }
 
 form .submit {
-  background-color: #007BFF;
+  background-color: #007bff;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -374,33 +373,48 @@ form .submit {
 /** Information bubble*/
 /* Style the question mark button */
 .info-button {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    font-size: 1rem;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    cursor: pointer;
-    margin-left: 10px;
-    padding: 0;
-}
-
-.info-button:hover {
-    background-color: #0056b3;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1rem;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 10px;
+  padding: 0;
+  position: relative;
 }
 
 /* Style the info bubble */
 .info-bubble {
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    position: absolute;
-    z-index: 1000;
-    max-width: 300px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    font-size: 0.9rem;
-    color: #333;
+  background-color: #f9f9f9;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 15px 10px 10px 10px;
+  position: absolute;
+  z-index: 1000;
+  max-width: 300px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  font-size: 0.9rem;
+  color: #333333;
+  text-align: left;
+  display: none; /* Start hidden */
+}
+
+/* Style the exit button inside the info bubble */
+.exit-button {
+  background: none;
+  border: none;
+  color: #aaaaaa;
+  font-size: 1.2rem;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.exit-button:hover {
+  color: #000000;
 }

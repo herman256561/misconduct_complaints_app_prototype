@@ -1,124 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Misconduct Complaints</title>
-    <link rel="stylesheet" href="styles/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rye&display=swap"
+      rel="stylesheet"
+    />
     <script src="scripts/script.js"></script>
-      <!-- Import Here Maps JavaScript and CSS -->
+    <script src="scripts/info_bubble.js"></script>
+    <!-- Import Here Maps JavaScript and CSS -->
     <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
     <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
     <script src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
-    <link rel="stylesheet" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://js.api.here.com/v3/3.1/mapsjs-ui.css"
+    />
+  </head>
+  <body>
     <header>
-        <nav class="navbar">
-            <div class="logo">
-                <a href="https://misconduct-complaints.glitch.me/">Law Enforcement Misconduct Complaints</a>
-            </div>
+      <nav class="navbar">
+        <div class="logo">
+          <a href="https://misconduct-complaints.glitch.me/"
+            >Law Enforcement Misconduct Complaints</a
+          >
+        </div>
 
-            <ul class="nav-links">
-                <li><a href="https://misconduct-complaints.glitch.me/">Home</a></li>
-                <li><a href="https://misconduct-complaints.glitch.me/forum.html">Forum</a></li>
-            </ul>
-        </nav>
+        <ul class="nav-links">
+          <li><a href="https://misconduct-complaints.glitch.me/">Home</a></li>
+          <li>
+            <a href="https://misconduct-complaints.glitch.me/forum.html"
+              >Forum</a
+            >
+          </li>
+        </ul>
+      </nav>
     </header>
     <main>
-        <section class="complaint-section">
-            <h1>
-              Search Complaint Information
-              <button class="info-button" aria-label="More Information">?</button>
-          </h1>
-          <div class="info-bubble" style="display: none;">Input the location that you experienced the law enforcement misconduct. We will provide information for you to contact the authority to file a complaint.</div>
-            <div class="search-container">
-                <input type="text" placeholder="Enter the Location Where Misconduct Happened" class="search-input">
-                <button class="search-button">Search</button>
-                <a href="map-search.html">
-                  <button class="map-toggle-button">Map Mode</button>  
-                </a>
-            </div>
-            <table class="info-table" style="display: none;">
-                <tr>
-                    <th>Name</th>
-                    <td>Pittsburgh</td>
-                </tr>
-                <tr>
-                    <th>Type</th>
-                    <td>City</td>
-                </tr>
-                <tr>
-                    <th>Resource</th>
-                    <td>Call</td>
-                </tr>
-                <tr>
-                    <th>Contact</th>
-                    <td>412-255-2621</td>
-                </tr>
-                <tr>
-                    <th>Note</th>
-                    <td><a href="https://pittsburghpa.gov/omi/filing-complaint/" target="_blank">
-                        No complaint form, but very thorough information (on OMI) on it
-                    </a></td>
-                </tr>
-            </table>
-            <table class="info-table" style="display: none;">
-                <tr>
-                    <th>Name</th>
-                    <td>Pittsburgh</td>
-                </tr>
-                <tr>
-                    <th>Type</th>
-                    <td>City</td>
-                </tr>
-                <tr>
-                    <th>Resource</th>
-                    <td>Call</td>
-                </tr>
-                <tr>
-                    <th>Contact</th>
-                    <td>412-255-2621</td>
-                </tr>
-                <tr>
-                    <th>Note</th>
-                    <td><a href="https://pittsburghpa.gov/omi/filing-complaint/" target="_blank">
-                        No complaint form, but very thorough information (on OMI) on it
-                    </a></td>
-                </tr>
-            </table>
-            <table class="info-table" style="display: none;">
-                <tr>
-                    <th>Name</th>
-                    <td>Pittsburgh</td>
-                </tr>
-                <tr>
-                    <th>Type</th>
-                    <td>City</td>
-                </tr>
-                <tr>
-                    <th>Resource</th>
-                    <td>Call</td>
-                </tr>
-                <tr>
-                    <th>Contact</th>
-                    <td>412-255-2621</td>
-                </tr>
-                <tr>
-                    <th>Note</th>
-                    <td><a href="https://pittsburghpa.gov/omi/filing-complaint/" target="_blank">
-                        No complaint form, but very thorough information (on OMI) on it
-                    </a></td>
-                </tr>
-            </table>
-        </section>
-        <section class="misconduct-section">
-            <h2>Misconduct Complaint in Allegheny County</h2>
-            <p>
-                Each municipality independently manages the recruitment, training, and oversight of its own police force in Allegheny County. While some police departments serve multiple municipalities, the majority have their own independent police force. This creates significant barriers to officer accountability in cases of tension due to the inconsistent and hyper-fragmented nature of complaint policies, procedures, and disciplinary actions. In 2021, the sum of total police expenditure was 2.4 billion dollars. The county has a total of 2,246 officers with only 156 of them being part- time.
-            </p>
-        </section>
+      <section class="complaint-section">
+        <h1>
+          Search Complaint Information
+          <button class="info-button" aria-label="More Information">?</button>
+        </h1>
+        <div class="info-bubble" style="display: none">
+          <button class="exit-button" aria-label="Close">&times;</button>
+          <p>Input the location that you experienced the law enforcement misconduct. We will provide information for you to contact the authority to file a complaint.</p>
+        </div>
+        <div class="search-container">
+          <input
+            type="text"
+            placeholder="Enter the Location Where Misconduct Happened"
+            class="search-input"
+          />
+          <button class="search-button">Search</button>
+          <a href="map-search.html">
+            <button class="map-toggle-button">Map Mode</button>
+          </a>
+        </div>
+        <table class="info-table" style="display: none">
+          <tr>
+            <th>Name</th>
+            <td>Pittsburgh</td>
+          </tr>
+          <tr>
+            <th>Type</th>
+            <td>City</td>
+          </tr>
+          <tr>
+            <th>Resource</th>
+            <td>Call</td>
+          </tr>
+          <tr>
+            <th>Contact</th>
+            <td>412-255-2621</td>
+          </tr>
+          <tr>
+            <th>Note</th>
+            <td>
+              <a
+                href="https://pittsburghpa.gov/omi/filing-complaint/"
+                target="_blank"
+              >
+                No complaint form, but very thorough information (on OMI) on it
+              </a>
+            </td>
+          </tr>
+        </table>
+        <table class="info-table" style="display: none">
+          <tr>
+            <th>Name</th>
+            <td>Pittsburgh</td>
+          </tr>
+          <tr>
+            <th>Type</th>
+            <td>City</td>
+          </tr>
+          <tr>
+            <th>Resource</th>
+            <td>Call</td>
+          </tr>
+          <tr>
+            <th>Contact</th>
+            <td>412-255-2621</td>
+          </tr>
+          <tr>
+            <th>Note</th>
+            <td>
+              <a
+                href="https://pittsburghpa.gov/omi/filing-complaint/"
+                target="_blank"
+              >
+                No complaint form, but very thorough information (on OMI) on it
+              </a>
+            </td>
+          </tr>
+        </table>
+        <table class="info-table" style="display: none">
+          <tr>
+            <th>Name</th>
+            <td>Pittsburgh</td>
+          </tr>
+          <tr>
+            <th>Type</th>
+            <td>City</td>
+          </tr>
+          <tr>
+            <th>Resource</th>
+            <td>Call</td>
+          </tr>
+          <tr>
+            <th>Contact</th>
+            <td>412-255-2621</td>
+          </tr>
+          <tr>
+            <th>Note</th>
+            <td>
+              <a
+                href="https://pittsburghpa.gov/omi/filing-complaint/"
+                target="_blank"
+              >
+                No complaint form, but very thorough information (on OMI) on it
+              </a>
+            </td>
+          </tr>
+        </table>
+      </section>
+      <section class="misconduct-section">
+        <h2>Misconduct Complaint in Allegheny County</h2>
+        <p>
+          Each municipality independently manages the recruitment, training, and
+          oversight of its own police force in Allegheny County. While some
+          police departments serve multiple municipalities, the majority have
+          their own independent police force. This creates significant barriers
+          to officer accountability in cases of tension due to the inconsistent
+          and hyper-fragmented nature of complaint policies, procedures, and
+          disciplinary actions. In 2021, the sum of total police expenditure was
+          2.4 billion dollars. The county has a total of 2,246 officers with
+          only 156 of them being part- time.
+        </p>
+      </section>
     </main>
-</body>
+  </body>
 </html>

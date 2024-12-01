@@ -5,21 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let bubble = null; // InfoBubble
   let marker = null; // Current map marker
 
-    // Code for information bubble
-  const infoButton = document.querySelector(".info-button");
-  const infoBubble = document.querySelector(".info-bubble");
-  // Toggle info bubble visibility
-  infoButton.addEventListener("click", () => {
-    if (
-      infoBubble.style.display === "none" ||
-      infoBubble.style.display === ""
-    ) {
-      infoBubble.style.display = "block";
-    } else {
-      infoBubble.style.display = "none";
-    }
-  });
-  
+
+
   // 顯示表格
   searchButton.addEventListener("click", () => {
     tables.forEach((table) => {
@@ -224,5 +211,4 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.removeItem("newDiscussion");
     }
   }
-
 });

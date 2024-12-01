@@ -5,16 +5,74 @@ document.addEventListener("DOMContentLoaded", () => {
   let bubble = null; // InfoBubble
   let marker = null; // Current map marker
 
+  // Create "Locate Me" button and add it to the map
+  function addLocateMeButton(map, ui) {
+    const locateButton = document.createElement("button");
+    locateButton.textContent = "Locate Me";
+    locateButton.style.position = "absolute";
+    locateButton.style.top = "10px";
+    locateButton.style.left = "10px";
+    locateButton.style.padding = "10px";
+    locateButton.style.backgroundColor = "#007BFF";
+    locateButton.style.color = "white";
+    locateButton.style.border = "none";
+    locateButton.style.borderRadius = "5px";
+    locateButton.style.cursor = "pointer";
+    locateButton.style.zIndex = "1000";
 
+    // Add click event listener to the button
+    locateButton.addEventListener("click", () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const userCoords = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            };
 
-  // 顯示表格
-  searchButton.addEventListener("click", () => {
-    tables.forEach((table) => {
-      table.style.display = "table";
+            // Center map on user's location
+            map.setCenter(userCoords);
+            map.setZoom(15);
+
+            // Remove existing marker (if any)
+            if (marker) {
+              map.removeObject(marker);
+            }
+
+            // Add a marker for the user's location
+            marker = new H.map.Marker(userCoords);
+            map.addObject(marker);
+
+            // Add an info bubble showing the user's location
+            if (bubble) {
+              ui.removeBubble(bubble);
+            }
+
+            bubble = new H.ui.InfoBubble(userCoords, {
+              content: `
+                <div class="here-map-info-bubble">
+                  <p><strong>Your Location</strong></p>
+                  <p>Latitude: ${userCoords.lat.toFixed(4)}</p>
+                  <p>Longitude: ${userCoords.lng.toFixed(4)}</p>
+                </div>
+              `,
+            });
+            ui.addBubble(bubble);
+          },
+          (error) => {
+            alert("Unable to retrieve your location. Please try again.");
+            console.error("Geolocation error:", error);
+          }
+        );
+      } else {
+        alert("Geolocation is not supported by your browser.");
+      }
     });
-  });
-  
-  
+
+    // Append the button to the map container
+    document.getElementById("search-container").appendChild(locateButton);
+  }
+
   // Reverse Geocoding: Get location information from coordinates
   function reverseGeocode(platform, coord, callback) {
     const geocoder = platform.getSearchService();
@@ -98,33 +156,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
-
-  // Initialize HERE Maps
-  const platform = new H.service.Platform({
-    apikey: "bjVmBc2hpWGt1sn_mtnkvZCkuC0vqx_D3pp44ehO5AE", // Replace with your HERE Maps API Key
-  });
-
-  const defaultLayers = platform.createDefaultLayers();
-
-  const map = new H.Map(
-    document.getElementById("map"),
-    defaultLayers.vector.normal.map,
-    {
-      center: { lat: 40.444611161087145, lng: -79.9521080838433 },
-      zoom: 15,
-    }
-  );
-
-  // Adjust map viewport on window resize
-  window.addEventListener("resize", () => map.getViewPort().resize());
-
-  // Enable map interaction
-  const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
-
-  // Add UI controls
-  const ui = H.ui.UI.createDefault(map, defaultLayers);
-
-  // Handle Address Search
+  
+    // Handle Address Search
   function handleSearch() {
     const query = searchInput.value.trim();
     if (query) {
@@ -154,62 +187,35 @@ document.addEventListener("DOMContentLoaded", () => {
       handleSearch();
     }
   });
+  
+  // Initialize HERE Maps
+  const platform = new H.service.Platform({
+    apikey: "bjVmBc2hpWGt1sn_mtnkvZCkuC0vqx_D3pp44ehO5AE", // Replace with your HERE Maps API Key
+  });
+
+  const defaultLayers = platform.createDefaultLayers();
+
+  const map = new H.Map(
+    document.getElementById("map"),
+    defaultLayers.vector.normal.map,
+    {
+      center: { lat: 40.444611161087145, lng: -79.9521080838433 },
+      zoom: 15,
+    }
+  );
+
+  // Adjust map viewport on window resize
+  window.addEventListener("resize", () => map.getViewPort().resize());
+
+  // Enable map interaction
+  const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+  // Add UI controls
+  const ui = H.ui.UI.createDefault(map, defaultLayers);
+
+  // Attach "Locate Me" button
+  addLocateMeButton(map, ui);
 
   // Initialize map click listener
   setUpClickListener(map);
-
-  // Handle new discussion form submission
-  const form = document.getElementById("discussionForm");
-  if (form) {
-    form.addEventListener("submit", (event) => {
-      event.preventDefault(); // Prevent default form submission behavior
-
-      const title = document.getElementById("title").value.trim();
-      const author = document.getElementById("name").value.trim();
-      const content = document.getElementById("content").value.trim();
-
-      // Check if all fields are filled
-      if (!title || !author || !content) {
-        alert("Please fill out all fields!");
-        return;
-      }
-
-      const discussion = {
-        title,
-        author,
-        content,
-        date: new Date().toLocaleDateString(),
-      };
-
-      // Save discussion data to localStorage
-      localStorage.setItem("newDiscussion", JSON.stringify(discussion));
-
-      // Redirect to forum.html
-      window.location.href = "forum.html"; // Ensure this line executes
-    });
-  }
-
-  // Handle forum page discussions
-  const discussionsContainer = document.getElementById("discussionsContainer");
-  if (discussionsContainer) {
-    const newDiscussion = localStorage.getItem("newDiscussion");
-    if (newDiscussion) {
-      const discussion = JSON.parse(newDiscussion);
-
-      // Create new article element
-      const article = document.createElement("article");
-      article.classList.add("discussion");
-      article.innerHTML = `
-                  <h2>${discussion.title}</h2>
-                  <p><strong>${discussion.author}</strong> on ${discussion.date}</p>
-                  <p>${discussion.content}</p>
-              `;
-
-      // Add new discussion to the container
-      discussionsContainer.prepend(article);
-
-      // Clear the new discussion data from localStorage
-      localStorage.removeItem("newDiscussion");
-    }
-  }
 });

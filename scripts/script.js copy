@@ -2,9 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchButton = document.querySelector(".search-button");
   const searchInput = document.querySelector(".search-input");
   const tables = document.querySelectorAll(".info-table");
-  let bubble = null;
-  let flag = false;
-  let marker = null; // 用於存儲當前的地圖標記
+  let bubble = null; // InfoBubble
+  let marker = null; // Current map marker
+
+
 
   // 顯示表格
   searchButton.addEventListener("click", () => {
@@ -13,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Reverse Geocoding: Get location information from coordinates
   function reverseGeocode(platform, coord, callback) {
     const geocoder = platform.getSearchService();
 
@@ -24,56 +26,33 @@ document.addEventListener("DOMContentLoaded", () => {
         if (result.items && result.items.length) {
           const postalCode = result.items[0].address.postalCode || "N/A";
           const locationContent = `
-            <div class="here-map-info-bubble">
-                <p><strong>ZIP Code:</strong> ${postalCode}</p>
-                <p><strong>Contact:</strong> 412-255-2621</p>
-            </div>`;
+              <div class="here-map-info-bubble">
+                  <p><strong>ZIP Code:</strong> ${postalCode}</p>
+                  <p><strong>Available Time: </strong>10am - 17pm</p>
+                  <p><strong>Contact:</strong> 412-255-2621</p>
+                  <p><strong>Notes:</strong> No complaint form, but very thorough information (on OMI) on it <a href="#">https://pittsburghpa.gov/omi/filing-complaint/</a></p>
+              </div>`;
           callback(locationContent);
         } else {
           callback(`
-            <div class="here-map-info-bubble">
-                <p><strong>Location not found</strong></p>
-            </div>
-          `);
+              <div class="here-map-info-bubble">
+                  <p><strong>Location not found</strong></p>
+              </div>
+            `);
         }
       },
       (error) => {
         console.error("Reverse geocoding failed:", error);
         callback(`
-          <div class="here-map-info-bubble">
-              <p><strong>Error retrieving location</strong></p>
-          </div>
-        `);
+            <div class="here-map-info-bubble">
+                <p><strong>Error retrieving location</strong></p>
+            </div>
+          `);
       }
     );
   }
 
-
-  /*
-  // Reverse geocoding to get location information
-  function reverseGeocode(platform, coord, callback) {
-    const geocoder = platform.getSearchService();
-    geocoder.reverseGeocode(
-      {
-        at: `${coord.lat},${coord.lng}`,
-      },
-      (result) => {
-        const location =
-          result.items && result.items.length
-            ? "ZIP Code: " +
-              result.items[0].address.postalCode +
-              " Please contact: 412-255-2621"
-            : "Unknown location";
-        callback(location);
-      },
-      (error) => {
-        console.error("Reverse geocoding failed:", error);
-        callback("Error retrieving location");
-      }
-    );
-  }
-  */
-  // Geocode address from user input
+  // Geocode Address: Get coordinates from user input
   function geocodeAddress(platform, query, callback) {
     const geocoder = platform.getSearchService();
     geocoder.geocode(
@@ -95,56 +74,56 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-  // Handle map click events to show location info
+  // Map Click Listener: Handle click events to display location info
   function setUpClickListener(map) {
-    map.addEventListener("tap", function (evt) {
+    map.addEventListener("tap", (evt) => {
       const coord = map.screenToGeo(
         evt.currentPointer.viewportX,
         evt.currentPointer.viewportY
       );
 
       reverseGeocode(platform, coord, (location) => {
-        // Remove the existing bubble if it exists
         if (bubble) {
           ui.removeBubble(bubble);
         }
 
-        // Create a new bubble with location info
-        bubble = new H.ui.InfoBubble({ lat: coord.lat, lng: coord.lng }, {
-          content: location, // Content is directly passed from reverseGeocode
-        });
+        bubble = new H.ui.InfoBubble(
+          { lat: coord.lat, lng: coord.lng },
+          {
+            content: location, // Pass content directly from reverseGeocode
+          }
+        );
         ui.addBubble(bubble);
       });
     });
   }
 
-  // Initialize Here Maps platform
+  // Initialize HERE Maps
   const platform = new H.service.Platform({
-    apikey: "bjVmBc2hpWGt1sn_mtnkvZCkuC0vqx_D3pp44ehO5AE", // Replace with your Here Maps API Key
+    apikey: "bjVmBc2hpWGt1sn_mtnkvZCkuC0vqx_D3pp44ehO5AE", // Replace with your HERE Maps API Key
   });
 
-  // Retrieve default map layers
   const defaultLayers = platform.createDefaultLayers();
 
-  // Initialize map container
   const map = new H.Map(
     document.getElementById("map"),
     defaultLayers.vector.normal.map,
     {
-      center: { lat: 40.444611161087145, lng: -79.9521080838433 }, // Initial latitude and longitude
-      zoom: 15, // Initial zoom level
+      center: { lat: 40.444611161087145, lng: -79.9521080838433 },
+      zoom: 15,
     }
   );
 
+  // Adjust map viewport on window resize
   window.addEventListener("resize", () => map.getViewPort().resize());
 
-  // Enable map interaction (zoom, drag)
+  // Enable map interaction
   const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 
-  // Add UI controls (e.g., zoom buttons)
+  // Add UI controls
   const ui = H.ui.UI.createDefault(map, defaultLayers);
 
-  // 處理地址搜尋
+  // Handle Address Search
   function handleSearch() {
     const query = searchInput.value.trim();
     if (query) {
@@ -152,16 +131,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (error) {
           alert(error);
         } else {
-          // 移除前一個標記（如果存在）
           if (marker) {
-            map.removeObject(marker);
+            map.removeObject(marker); // Remove previous marker
           }
 
-          // 新位置移動到地圖中心
-          map.setCenter(location);
+          map.setCenter(location); // Center map to new location
 
-          // 添加新的標記
-          marker = new H.map.Marker(location);
+          marker = new H.map.Marker(location); // Add new marker
           map.addObject(marker);
         }
       });
@@ -170,16 +146,69 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Set up map click listener
-  setUpClickListener(map);
-
-  // Handle search button click
+  // Attach event listeners
   searchButton.addEventListener("click", handleSearch);
-
-  // Handle Enter key press
   searchInput.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
       handleSearch();
     }
   });
+
+  // Initialize map click listener
+  setUpClickListener(map);
+
+  // Handle new discussion form submission
+  const form = document.getElementById("discussionForm");
+  if (form) {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault(); // Prevent default form submission behavior
+
+      const title = document.getElementById("title").value.trim();
+      const author = document.getElementById("name").value.trim();
+      const content = document.getElementById("content").value.trim();
+
+      // Check if all fields are filled
+      if (!title || !author || !content) {
+        alert("Please fill out all fields!");
+        return;
+      }
+
+      const discussion = {
+        title,
+        author,
+        content,
+        date: new Date().toLocaleDateString(),
+      };
+
+      // Save discussion data to localStorage
+      localStorage.setItem("newDiscussion", JSON.stringify(discussion));
+
+      // Redirect to forum.html
+      window.location.href = "forum.html"; // Ensure this line executes
+    });
+  }
+
+  // Handle forum page discussions
+  const discussionsContainer = document.getElementById("discussionsContainer");
+  if (discussionsContainer) {
+    const newDiscussion = localStorage.getItem("newDiscussion");
+    if (newDiscussion) {
+      const discussion = JSON.parse(newDiscussion);
+
+      // Create new article element
+      const article = document.createElement("article");
+      article.classList.add("discussion");
+      article.innerHTML = `
+                  <h2>${discussion.title}</h2>
+                  <p><strong>${discussion.author}</strong> on ${discussion.date}</p>
+                  <p>${discussion.content}</p>
+              `;
+
+      // Add new discussion to the container
+      discussionsContainer.prepend(article);
+
+      // Clear the new discussion data from localStorage
+      localStorage.removeItem("newDiscussion");
+    }
+  }
 });

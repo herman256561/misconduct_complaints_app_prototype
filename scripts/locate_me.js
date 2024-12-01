@@ -9,16 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
   function addLocateMeButton(map, ui) {
     const locateButton = document.createElement("button");
     locateButton.textContent = "Locate Me";
-    locateButton.style.position = "absolute";
-    locateButton.style.top = "10px";
-    locateButton.style.left = "10px";
-    locateButton.style.padding = "10px";
-    locateButton.style.backgroundColor = "#007BFF";
-    locateButton.style.color = "white";
+    locateButton.style.backgroundColor = "#a67f23";
+    locateButton.style.color="white";
     locateButton.style.border = "none";
     locateButton.style.borderRadius = "5px";
     locateButton.style.cursor = "pointer";
-    locateButton.style.zIndex = "1000";
 
     // Add click event listener to the button
     locateButton.addEventListener("click", () => {

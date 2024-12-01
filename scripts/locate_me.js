@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const locateButton = document.createElement("button");
     locateButton.textContent = "Locate Me";
     locateButton.style.backgroundColor = "#a67f23";
-    locateButton.style.color="white";
+    locateButton.style.color = "white";
     locateButton.style.border = "none";
     locateButton.style.borderRadius = "5px";
     locateButton.style.cursor = "pointer";
@@ -42,17 +42,20 @@ document.addEventListener("DOMContentLoaded", () => {
             if (bubble) {
               ui.removeBubble(bubble);
             }
+            reverseGeocode(platform, userCoords, (location) => {
+              if (bubble) {
+                ui.removeBubble(bubble);
+              }
 
-            bubble = new H.ui.InfoBubble(userCoords, {
-              content: `
-                <div class="here-map-info-bubble">
-                  <p><strong>Your Location</strong></p>
-                  <p>Latitude: ${userCoords.lat.toFixed(4)}</p>
-                  <p>Longitude: ${userCoords.lng.toFixed(4)}</p>
-                </div>
-              `,
+              bubble = new H.ui.InfoBubble(
+                { lat: userCoords.lat, lng: userCoords.lng },
+                {
+                  content: location, // Pass content directly from reverseGeocode
+                }
+              );
+              ui.addBubble(bubble);
             });
-            ui.addBubble(bubble);
+            
           },
           (error) => {
             alert("Unable to retrieve your location. Please try again.");
@@ -151,8 +154,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
-  
-    // Handle Address Search
+
+  // Handle Address Search
   function handleSearch() {
     const query = searchInput.value.trim();
     if (query) {
@@ -182,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
       handleSearch();
     }
   });
-  
+
   // Initialize HERE Maps
   const platform = new H.service.Platform({
     apikey: "bjVmBc2hpWGt1sn_mtnkvZCkuC0vqx_D3pp44ehO5AE", // Replace with your HERE Maps API Key

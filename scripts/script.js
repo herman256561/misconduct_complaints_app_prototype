@@ -5,16 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let bubble = null; // InfoBubble
   let marker = null; // Current map marker
 
-
-
   // 顯示表格
   searchButton.addEventListener("click", () => {
     tables.forEach((table) => {
       table.style.display = "table";
     });
   });
-  
-  
+    
   // Reverse Geocoding: Get location information from coordinates
   function reverseGeocode(platform, coord, callback) {
     const geocoder = platform.getSearchService();

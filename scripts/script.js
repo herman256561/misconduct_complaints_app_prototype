@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const tables = document.querySelectorAll(".info-table");
   let bubble = null; // InfoBubble
   let marker = null; // Current map marker
+    /* Discussion page */
+  const searchPostButton = document.querySelector(".searchPost-button");
+  const searchPostInput = document.querySelector(".searchPost-input");
+  const discussions = document.querySelectorAll(".discussion");
 
   // 顯示表格
   searchButton.addEventListener("click", () => {
@@ -155,58 +159,31 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize map click listener
   setUpClickListener(map);
 
-  // Handle new discussion form submission
-  const form = document.getElementById("discussionForm");
-  if (form) {
-    form.addEventListener("submit", (event) => {
-      event.preventDefault(); // Prevent default form submission behavior
+  // Function to filter discussions based on search query
+  function filterDiscussions() {
+      const query = searchInput.value.trim().toLowerCase();
 
-      const title = document.getElementById("title").value.trim();
-      const author = document.getElementById("name").value.trim();
-      const content = document.getElementById("content").value.trim();
+      discussions.forEach((discussion) => {
+          const title = discussion.querySelector("h2").textContent.toLowerCase();
 
-      // Check if all fields are filled
-      if (!title || !author || !content) {
-        alert("Please fill out all fields!");
-        return;
+          // Check if the title includes the search query
+          if (title.includes(query)) {
+              discussion.style.display = "block"; // Show discussion
+          } else {
+              discussion.style.display = "none"; // Hide discussion
+          }
+      });
+  }
+
+  // Event listener for the Search button
+  searchPostButton.addEventListener("click", () => {
+      filterDiscussions();
+  });
+
+  // Event listener for Enter key press in the search input
+  searchPostInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+          filterDiscussions();
       }
-
-      const discussion = {
-        title,
-        author,
-        content,
-        date: new Date().toLocaleDateString(),
-      };
-
-      // Save discussion data to localStorage
-      localStorage.setItem("newDiscussion", JSON.stringify(discussion));
-
-      // Redirect to forum.html
-      window.location.href = "forum.html"; // Ensure this line executes
-    });
-  }
-
-  // Handle forum page discussions
-  const discussionsContainer = document.getElementById("discussionsContainer");
-  if (discussionsContainer) {
-    const newDiscussion = localStorage.getItem("newDiscussion");
-    if (newDiscussion) {
-      const discussion = JSON.parse(newDiscussion);
-
-      // Create new article element
-      const article = document.createElement("article");
-      article.classList.add("discussion");
-      article.innerHTML = `
-                  <h2>${discussion.title}</h2>
-                  <p><strong>${discussion.author}</strong> on ${discussion.date}</p>
-                  <p>${discussion.content}</p>
-              `;
-
-      // Add new discussion to the container
-      discussionsContainer.prepend(article);
-
-      // Clear the new discussion data from localStorage
-      localStorage.removeItem("newDiscussion");
-    }
-  }
+  });
 });

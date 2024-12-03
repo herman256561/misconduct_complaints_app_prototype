@@ -161,40 +161,42 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize map click listener
   setUpClickListener(map);
 
-  // Function to filter discussions based on search query
-  function filterDiscussions() {
-    const query = searchPostInput.value.trim().toLowerCase();
+  // Ensure all required elements are present before proceeding
+  if (searchPostButton && searchPostInput && discussions) {
+    // Function to filter discussions based on search query
+    function filterDiscussions() {
+      const query = searchPostInput.value.trim().toLowerCase();
 
-    // Check if input is empty
-    if (query === "") {
-      alert("Please enter a valid search query.");
-      return;
+      // Show an alert if the search input is empty
+      if (query === "") {
+        alert("Please input valid content.");
+        return;
+      }
+
+      // Iterate through all discussions and show/hide based on title match
+      discussions.forEach((discussion) => {
+        const title = discussion.querySelector("h2").textContent.toLowerCase();
+
+        if (title.includes(query)) {
+          discussion.style.display = "block"; // Show matching discussions
+        } else {
+          discussion.style.display = "none"; // Hide non-matching discussions
+        }
+      });
     }
 
-    // Filter discussions
-    discussions.forEach((discussion) => {
-      const title = discussion.querySelector("h2").textContent.toLowerCase();
-
-      // Check if the title includes the search query
-      if (title.includes(query)) {
-        discussion.style.display = "block"; // Show discussion
-      } else {
-        discussion.style.display = "none"; // Hide discussion
-      }
-    });
-  }
-
-  // Attach event listener to Search button
-  if (searchPostButton) {
+    // Attach click event listener to the search button
     searchPostButton.addEventListener("click", filterDiscussions);
-  }
 
-  // Attach event listener to Enter key in the search input
-  if (searchPostInput) {
+    // Attach keypress event listener to handle Enter key for search input
     searchPostInput.addEventListener("keypress", (e) => {
       if (e.key === "Enter") {
         filterDiscussions();
       }
     });
+  } else {
+    console.error(
+      "Search button, input field, or discussion elements are not found in the DOM."
+    );
   }
 });

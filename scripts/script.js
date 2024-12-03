@@ -10,11 +10,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const discussions = document.querySelectorAll(".discussion");
 
   // 顯示表格
-  searchButton.addEventListener("click", () => {
-    tables.forEach((table) => {
-      table.style.display = "table";
+  if(searchButton){
+    searchButton.addEventListener("click", () => {
+      tables.forEach((table) => {
+        table.style.display = "table";
+      });
     });
-  });
+  }
     
   // Reverse Geocoding: Get location information from coordinates
   function reverseGeocode(platform, coord, callback) {
@@ -161,29 +163,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function to filter discussions based on search query
   function filterDiscussions() {
-      const query = searchInput.value.trim().toLowerCase();
+    const query = searchPostInput.value.trim().toLowerCase();
 
-      discussions.forEach((discussion) => {
-          const title = discussion.querySelector("h2").textContent.toLowerCase();
+    // Check if input is empty
+    if (query === "") {
+      alert("Please enter a valid search query.");
+      return;
+    }
 
-          // Check if the title includes the search query
-          if (title.includes(query)) {
-              discussion.style.display = "block"; // Show discussion
-          } else {
-              discussion.style.display = "none"; // Hide discussion
-          }
-      });
+    // Filter discussions
+    discussions.forEach((discussion) => {
+      const title = discussion.querySelector("h2").textContent.toLowerCase();
+
+      // Check if the title includes the search query
+      if (title.includes(query)) {
+        discussion.style.display = "block"; // Show discussion
+      } else {
+        discussion.style.display = "none"; // Hide discussion
+      }
+    });
   }
 
-  // Event listener for the Search button
-  searchPostButton.addEventListener("click", () => {
-      filterDiscussions();
-  });
+  // Attach event listener to Search button
+  if (searchPostButton) {
+    searchPostButton.addEventListener("click", filterDiscussions);
+  }
 
-  // Event listener for Enter key press in the search input
-  searchPostInput.addEventListener("keypress", (e) => {
+  // Attach event listener to Enter key in the search input
+  if (searchPostInput) {
+    searchPostInput.addEventListener("keypress", (e) => {
       if (e.key === "Enter") {
-          filterDiscussions();
+        filterDiscussions();
       }
-  });
+    });
+  }
 });

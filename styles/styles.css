@@ -79,7 +79,8 @@ h1 {
   gap: 10px;
 }
 
-.search-input {
+.search-input,
+.searchPost-input {
   padding: 10px;
   width: 75%;
   max-width: 80%;
@@ -88,6 +89,7 @@ h1 {
 }
 
 .search-button,
+.searchPost-button,
 .map-toggle-button,
 .post-button,
 .new-discussion-button {

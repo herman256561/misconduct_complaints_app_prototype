@@ -176,13 +176,17 @@ h1 {
   border: 1px solid #dddddd;
 }
 
-.info-table th,
-.static-table th{
+.info-table th {
   background-color: #f6e27a;
 }
 
-.static-table th {
-  margin: 0px auto;
+.static-table th{
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.static-table td{
+  text-align: center;
 }
 
 .info-table td a {

@@ -3,10 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchPostButton = document.querySelector(".searchPost-button");
   const clearPostButton = document.querySelector(".clearPost-button"); // Clear button from HTML
   const searchPostInput = document.querySelector(".searchPost-input");
+  const discussionsContainer = document.getElementById("discussionsContainer");
   const discussions = document.querySelectorAll(".discussion");
 
   // Ensure all required elements are present before proceeding
-  if (searchPostButton && searchPostInput && discussions && clearPostButton) {
+  if (searchPostButton && searchPostInput && discussionsContainer && clearPostButton) {
     // Function to filter discussions based on search query
     function filterDiscussions() {
       const query = searchPostInput.value.trim().toLowerCase();
@@ -55,5 +56,34 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error(
       "Search button, input field, discussion elements, or clear button are not found in the DOM."
     );
+  }
+
+  // Handle new discussion from new-discussion.html
+  const newDiscussion = localStorage.getItem("newDiscussion");
+  if (newDiscussion) {
+    const discussion = JSON.parse(newDiscussion);
+
+    // Create new discussion element
+    const article = document.createElement("article");
+    article.classList.add("discussion");
+    article.innerHTML = `
+      <div class="discussion-header">
+        <div class="avatar"></div>
+        <div class="header-content">
+          <h2>${discussion.title}</h2>
+          <p>
+            <span class="author">${discussion.author}</span> on <span class="date">${discussion.date}</span>
+          </p>
+        </div>
+      </div>
+      <p>${discussion.content}</p>
+      <div class="meta">New discussion</div>
+    `;
+
+    // Add the new discussion to the top of the discussions container
+    discussionsContainer.prepend(article);
+
+    // Clear the new discussion data from localStorage
+    localStorage.removeItem("newDiscussion");
   }
 });

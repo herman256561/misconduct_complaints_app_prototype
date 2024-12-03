@@ -8,6 +8,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchPostButton = document.querySelector(".searchPost-button");
   const searchPostInput = document.querySelector(".searchPost-input");
   const discussions = document.querySelectorAll(".discussion");
+  
+  const hamburger = document.querySelector(".hamburger");
+  const navLinks = document.querySelector(".nav-links");
+
+  // 點擊漢堡按鈕切換選單開關
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+
+    // 切換漢堡按鈕動畫
+    hamburger.classList.toggle("active");
+  });
 
   // 顯示表格
   if(searchButton){

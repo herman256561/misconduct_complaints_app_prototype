@@ -22,7 +22,7 @@
       </header>
       <main>
          <secion class="new-post-title">
-            <h1>Start a New Discussion</h1>
+            <h1>Update/New Complaints Data</h1>
          </secion>
          <section class="form-container">
             <form id="discussionForm">
@@ -43,36 +43,12 @@
                
                  discussionForm.addEventListener("submit", (e) => {
                    e.preventDefault();
-               
-                   const title = document.getElementById("title").value.trim();
-                   const name = document.getElementById("name").value.trim();
-                   const content = document.getElementById("content").value.trim();
-                   const location = "Oakland"; // Default location
-               
-                   if (title === "" || name === "" || content === "") {
-                     alert("Please fill in all fields before submitting.");
-                     return;
-                   }
-               
-                   // Format date as "Nov 7, 2024"
-                   const options = { year: "numeric", month: "short", day: "numeric" };
-                   const date = new Date().toLocaleDateString("en-US", options);
-               
-                   const discussionData = {
-                     title,
-                     author: name,
-                     content,
-                     date,
-                     location,
-                   };
-               
-                   localStorage.setItem("newDiscussion", JSON.stringify(discussionData));
-                   window.location.href = "forum.html"; // Redirect to forum.html
+                   window.location.href = "tracker.html"; // Redirect to forum.html
                  });
                
                  const cancelButton = document.querySelector(".cancel");
                  cancelButton.addEventListener("click", () => {
-                   window.location.href = "forum.html";
+                   window.location.href = "tracker.html";
                  });
                });
             </script>

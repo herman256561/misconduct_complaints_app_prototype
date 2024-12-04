@@ -60,7 +60,8 @@ header {
 /* Search and Map Section Styles */
 .complaint-section,
 .forum-title,
-.new-post-title {
+.new-post-title,
+.survey-title {
   padding: 20px;
   text-align: center;
 }
@@ -80,7 +81,8 @@ h1 {
 }
 
 .search-input,
-.searchPost-input {
+.searchPost-input,
+.searchData-input {
   padding: 10px;
   width: 75%;
   max-width: 80%;
@@ -91,10 +93,12 @@ h1 {
 .search-button,
 .searchPost-button,
 .clearPost-button,
+.clearArea-button,
 .map-toggle-button,
 .post-button,
 .new-discussion-button,
-. {
+.new-survey-button,
+{
   background-color: #a67f23;
   color: white;
   padding: 10px 15px;

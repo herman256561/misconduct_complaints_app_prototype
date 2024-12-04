@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const hidetds = document.querySelector("hide-td");
+  const searchAreabutton = document.querySelector("searchArea-button");
+  const hidetrs = document.querySelector("hide-data");
   
-  hidetds.addEventListener("click", () => {
-    hidetds.forEach((hidetd) => {
-      hidetd.style.display = "none";
-    });
-    
+  searchAreabutton.addEventListener("click", () => {
+    hidetrs.forEach((hidetr) => {
+      hidetr.style.display = "none";
+    }); 
   });
 });

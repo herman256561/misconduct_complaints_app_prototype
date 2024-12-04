@@ -83,7 +83,7 @@ h1 {
 
 .search-input,
 .searchPost-input,
-.searchData-input {
+.searchArea-input {
   padding: 10px;
   width: 75%;
   max-width: 80%;
@@ -94,12 +94,12 @@ h1 {
 .search-button,
 .searchPost-button,
 .clearPost-button,
+.searchArea-button,
 .clearArea-button,
 .map-toggle-button,
 .post-button,
 .new-discussion-button,
-.new-survey-button,
-{
+.new-survey-button {
   background-color: #a67f23;
   color: white;
   padding: 10px 15px;

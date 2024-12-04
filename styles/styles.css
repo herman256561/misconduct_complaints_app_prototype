@@ -93,7 +93,8 @@ h1 {
 .clearPost-button,
 .map-toggle-button,
 .post-button,
-.new-discussion-button {
+.new-discussion-button,
+. {
   background-color: #a67f23;
   color: white;
   padding: 10px 15px;
@@ -181,6 +182,7 @@ h1 {
 }
 
 .static-table th{
+  text-align: center;
   background-color: #000000;
   color: #ffffff;
 }

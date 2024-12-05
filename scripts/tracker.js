@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (searchButton && clearButton && searchInput && rows.length > 0) {
     // Check if form submission flag exists in localStorage
     if (localStorage.getItem(formSubmittedKey) === "true") {
-      alert("Record sent successfully");
+      alert("Survey sent successfully");
       localStorage.removeItem(formSubmittedKey); // Clear flag after showing the alert
     }
 

@@ -75,7 +75,7 @@ h1 {
 .search-container,
 .search-bar {
   margin: 20px auto;
-  max-width: 880px;
+  max-width: 600px;
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -109,14 +109,16 @@ h1 {
 }
 
 
-.new-survey-button{
-  width: 20px;
+.new-survey-button {
   background-color: #a67f23;
   color: white;
   padding: 10px 15px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 14px;
+  width: 120px; /* 自動調整寬度以符合文字 */
+  text-align: center; /* 文字居中 */
 }
 
 .search-button:hover,

@@ -354,7 +354,7 @@ form label {
 }
 
 form input,
-form textarea {
+form textarea{
   width: 95%;
   padding: 10px;
   margin-bottom: 15px;
@@ -362,8 +362,16 @@ form textarea {
   border-radius: 4px;
 }
 
-form textarea {
-  height: 100px;
+form select {
+  width: 50%;
+  margin: 0px auto;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+
+form select {
+  height: 10px;
 }
 
 .form-buttons {

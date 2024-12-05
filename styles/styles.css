@@ -108,6 +108,10 @@ h1 {
   cursor: pointer;
 }
 
+.map-toggle-butto {
+  width: 120px;
+}
+
 
 .new-survey-button {
   background-color: #a67f23;

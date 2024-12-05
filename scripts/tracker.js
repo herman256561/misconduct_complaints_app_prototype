@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      if (!locationField.value.trim()) {
-        alert("Please enter a location.");
+      if (!locationField.value || locationField.value === "Select location") {
+        alert("Please select a location.");
         return;
       }
 

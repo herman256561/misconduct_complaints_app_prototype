@@ -9,12 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function addLocateMeButton(map, ui) {
     const locateButton = document.createElement("button");
     locateButton.textContent = "Locate Me";
+    /*
     locateButton.style.backgroundColor = "#a67f23";
     locateButton.style.color = "white";
     locateButton.style.border = "none";
     locateButton.style.borderRadius = "5px";
     locateButton.style.cursor = "pointer";
-
+    */
+    locateButton.className = "locate-me-button";
+    
     // Add click event listener to the button
     locateButton.addEventListener("click", () => {
       if (navigator.geolocation) {

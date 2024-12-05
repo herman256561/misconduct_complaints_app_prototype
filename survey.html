@@ -32,28 +32,29 @@
                <input type="text" id="name" placeholder="Add text">
                <label for="status">Status of the Complaint</label>
                   <select name="status" id="status">
-                    <option value="Complaint sent">Volvo</option>
-                    <option value="Complaint solved">Saab</option>
+                    <option value="Complaint sent">Complaint sent</option>
+                    <option value="Complaint solved">Complaint solved</option>
                   </select>
                <div class="form-buttons">
                   <button type="button" class="cancel">Cancel</button>
-                  <button type="submit" class="post-button">Post Discussion</button>
+                  <button type="submit" class="submit-button">submit</button>
                </div>
             </form>
             <script>
-               document.addEventListener("DOMContentLoaded", () => {
-                 const discussionForm = document.getElementById("discussionForm");
-               
-                 discussionForm.addEventListener("submit", (e) => {
-                   e.preventDefault();
-                   window.location.href = "tracker.html"; // Redirect to forum.html
-                 });
-               
-                 const cancelButton = document.querySelector(".cancel");
-                 cancelButton.addEventListener("click", () => {
-                   window.location.href = "tracker.html";
-                 });
-               });
+              document.addEventListener("DOMContentLoaded", () => {
+                const discussionForm = document.getElementById("discussionForm");
+
+                discussionForm.addEventListener("submit", (e) => {
+                  e.preventDefault();
+                  localStorage.setItem("formSubmitted", "true"); // Set flag to show alert on tracker.html
+                  window.location.href = "tracker.html"; // Redirect to tracker.html
+                });
+
+                const cancelButton = document.querySelector(".cancel");
+                cancelButton.addEventListener("click", () => {
+                  window.location.href = "tracker.html";
+                });
+              });
             </script>
          </section>
       </main>

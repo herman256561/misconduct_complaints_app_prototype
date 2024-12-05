@@ -4,6 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.querySelector(".searchArea-input");
   const rows = document.querySelectorAll(".hide-data");
 
+  // Check if the form was submitted
+  if (localStorage.getItem("formSubmitted") === "true") {
+    alert("Record sent successfully");
+    localStorage.removeItem("formSubmitted"); // Remove the flag
+  }
+
   // Function to handle the search action
   function handleSearch() {
     // Hide all .hide-data rows regardless of input

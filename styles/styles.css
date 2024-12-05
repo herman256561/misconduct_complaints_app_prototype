@@ -99,7 +99,8 @@ h1 {
 .map-toggle-button,
 .post-button,
 .new-discussion-button,
-.new-survey-button {
+.new-survey-button,
+.submit-button {
   background-color: #a67f23;
   color: white;
   padding: 10px 15px;
@@ -363,15 +364,16 @@ form textarea{
 }
 
 form select {
-  width: 50%;
-  margin: 0px auto;
-  padding: 10px;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-}
-
-form select {
-  height: 10px;
+  width: 50%; /* Control the width of the select element */
+  margin: 10px auto; /* Add vertical margin and center horizontally */
+  padding: 10px; /* Increase inner padding for better usability */
+  border: 1px solid #cccccc; /* Border color */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 16px; /* Font size */
+  background-color: #ffffff; /* Background color */
+  color: #333333; /* Text color */
+  outline: none; /* Remove the default outline */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Add smooth transition effect */
 }
 
 .form-buttons {

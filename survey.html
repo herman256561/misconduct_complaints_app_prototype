@@ -44,18 +44,18 @@
          </section>
          <script>
             document.addEventListener("DOMContentLoaded", () => {
-            const discussionForm = document.getElementById("discussionForm");
-            
-            discussionForm.addEventListener("submit", (e) => {
-              e.preventDefault();
-              localStorage.setItem("formSubmitted", "true"); // Set flag to show alert on tracker.html
-              window.location.href = "tracker.html"; // Redirect to tracker.html
-            });
-            
-            const cancelButton = document.querySelector(".cancel");
-            cancelButton.addEventListener("click", () => {
-              window.location.href = "tracker.html";
-            });
+              const discussionForm = document.getElementById("discussionForm");
+
+              discussionForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                localStorage.setItem("formSubmitted", "true"); // Set flag to show alert on tracker.html
+                window.location.href = "tracker.html"; // Redirect to tracker.html
+              });
+
+              const cancelButton = document.querySelector(".cancel");
+              cancelButton.addEventListener("click", () => {
+                window.location.href = "tracker.html";
+              });
             });
          </script>
       </main>

@@ -5,7 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Start a New Discussion</title>
       <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
-      <script src="scripts/forum.js"></script>
+      <script src="scripts/script.js"></script>
       <link rel="stylesheet" href="styles/styles.css">
    </head>
    <body>
@@ -21,42 +21,43 @@
          </nav>
       </header>
       <main>
-         <secion class="new-post-title">
+         <section class="new-post-title">
             <h1>Update/New Complaints Data</h1>
-         </secion>
+         </section>
          <section class="form-container">
             <form id="discussionForm">
                <label for="date">Date of Complaint</label>
-               <input type="date" id="date">
+               <input type="date" id="date" required>
                <label for="location">Location of Complaint</label>
-               <input type="text" id="name" placeholder="Add text">
+               <input type="text" id="location" placeholder="Add text" required>
                <label for="status">Status of the Complaint</label>
-                  <select name="status" id="status">
-                    <option value="Complaint sent">Complaint sent</option>
-                    <option value="Complaint solved">Complaint solved</option>
-                  </select>
+               <select name="status" id="status" required>
+                  <option value="" disabled selected>Select status</option>
+                  <option value="Complaint sent">Complaint sent</option>
+                  <option value="Complaint solved">Complaint solved</option>
+               </select>
                <div class="form-buttons">
                   <button type="button" class="cancel">Cancel</button>
-                  <button type="submit" class="submit-button">submit</button>
+                  <button type="submit" class="submit-button">Submit</button>
                </div>
             </form>
-            <script>
-              document.addEventListener("DOMContentLoaded", () => {
-                const discussionForm = document.getElementById("discussionForm");
-
-                discussionForm.addEventListener("submit", (e) => {
-                  e.preventDefault();
-                  localStorage.setItem("formSubmitted", "true"); // Set flag to show alert on tracker.html
-                  window.location.href = "tracker.html"; // Redirect to tracker.html
-                });
-
-                const cancelButton = document.querySelector(".cancel");
-                cancelButton.addEventListener("click", () => {
-                  window.location.href = "tracker.html";
-                });
-              });
-            </script>
          </section>
+         <script>
+            document.addEventListener("DOMContentLoaded", () => {
+            const discussionForm = document.getElementById("discussionForm");
+            
+            discussionForm.addEventListener("submit", (e) => {
+              e.preventDefault();
+              localStorage.setItem("formSubmitted", "true"); // Set flag to show alert on tracker.html
+              window.location.href = "tracker.html"; // Redirect to tracker.html
+            });
+            
+            const cancelButton = document.querySelector(".cancel");
+            cancelButton.addEventListener("click", () => {
+              window.location.href = "tracker.html";
+            });
+            });
+         </script>
       </main>
    </body>
 </html>

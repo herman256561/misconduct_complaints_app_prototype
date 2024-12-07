@@ -488,7 +488,7 @@ form .submit {
 }
 
 .faq-item {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   border: 1px solid #cccccc;
   border-radius: 5px;
   overflow: hidden;
@@ -503,6 +503,10 @@ form .submit {
   font-size: 16px;
   border: none;
   cursor: pointer;
+}
+
+.faq-question:hover {
+  background-color: #ab9d55;
 }
 
 .faq-question:focus {

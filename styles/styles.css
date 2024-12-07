@@ -62,7 +62,8 @@ header {
 .forum-title,
 .new-post-title,
 .survey-title,
-.tracker-title {
+.tracker-title,
+.misconduct-section {
   padding: 20px;
   text-align: center;
 }

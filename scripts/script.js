@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchPostInput = document.querySelector(".searchPost-input");
   const discussions = document.querySelectorAll(".discussion");
 
-  // 顯示表格
+  // display tables
   if(searchButton){
     searchButton.addEventListener("click", () => {
       tables.forEach((table) => {
@@ -18,7 +18,17 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
-    
+  
+  // clear search content
+  if(clearButton){
+    clearButton.addEventListener("click", () => {
+      searchInput.value = "";
+      tables.forEach((table) => {
+        table.style.display = "none";
+      });
+    });
+  }
+
   // Reverse Geocoding: Get location information from coordinates
   function reverseGeocode(platform, coord, callback) {
     const geocoder = platform.getSearchService();
@@ -158,15 +168,6 @@ document.addEventListener("DOMContentLoaded", () => {
       handleSearch();
     }
   });
-  clearButton.addEventListener("click", handleClear);
-  function handleClear(){
-    searchInput.value = ""; // Clear the search input
-    searchButton.addEventListener("click", () => {
-      tables.forEach((table) => {
-        table.style.display = "none";
-      });
-    });
-  }
 
   // Initialize map click listener
   setUpClickListener(map);

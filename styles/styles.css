@@ -63,7 +63,8 @@ header {
 .new-post-title,
 .survey-title,
 .tracker-title,
-.about-title {
+.about-title,
+.faq-title {
   padding: 20px;
   text-align: center;
 }
@@ -236,7 +237,7 @@ h1 {
 /* Misconduct Section Styles */
 .misconduct-section {
   padding: 20px;
-  background-color: #eddfaf;
+  background-color: #ebe0bc;
   text-align: center;
   max-width: 80%;
   margin: 0 auto;
@@ -475,4 +476,41 @@ form .submit {
 
 .exit-button:hover {
   color: #000000;
+}
+
+
+/* faq page*/
+.faq {
+  margin: 20px auto;
+  max-width: 800px;
+  font-family: Arial, sans-serif;
+}
+
+.faq-item {
+  margin-bottom: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  background-color: #a67f23;
+  color: white;
+  padding: 15px;
+  text-align: left;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.faq-question:focus {
+  outline: 2px solid #815e17;
+}
+
+.faq-answer {
+  padding: 15px;
+  background-color: #fff8e1;
+  font-size: 14px;
+  line-height: 1.6;
 }

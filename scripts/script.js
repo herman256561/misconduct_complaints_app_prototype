@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const searchButton = document.querySelector(".search-button");
   const searchInput = document.querySelector(".search-input");
+  const clearButton = document.querySelector(".clear-button");
   const tables = document.querySelectorAll(".info-table");
   let bubble = null; // InfoBubble
   let marker = null; // Current map marker
@@ -157,6 +158,15 @@ document.addEventListener("DOMContentLoaded", () => {
       handleSearch();
     }
   });
+  clearButton.addEventListener("click", handleClear);
+  function handleClear(){
+    searchInput.value = ""; // Clear the search input
+    searchButton.addEventListener("click", () => {
+      tables.forEach((table) => {
+        table.style.display = "none";
+      });
+    });
+  }
 
   // Initialize map click listener
   setUpClickListener(map);
